@@ -1,0 +1,232 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-blue: #094fdb;
+    --light-yellow: #fffdf7;
+    --light-green: #85e5c6;
+    --primary-green-text: #357471;
+    --secondary-green-text: #323232;
+    --default-text: #333;
+}
+
+body{
+    font-family: Favoritfreshly,sans-serif;
+    color: var(--default-text);
+    font-size: .875rem;
+    line-height: 1.43em;
+    font-weight: 400;
+}
+
+a{
+    background-color: transparent;
+    transition: opacity .2s;
+    text-decoration: underline;
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+
+
+
+.primary-button{
+    display: inline-block;
+    background-color: var(--primary-blue);
+}
+
+/* --------------------------------Plans Section--------------------------------  */
+
+/* Plans Header  */
+.plansHeaderContainer{
+    background: var(--light-yellow);
+    padding: 64px 32px;
+}
+
+.plansHeaderContainerInner{
+    max-width: 1440px;
+    margin: auto;
+}
+
+.planHeaderTitle{
+    max-width: 700px;
+    margin-bottom: 33px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.planHeaderTitle h2{
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    font-size: 2.375rem;
+    line-height: 1.16em;
+}
+
+.planHeaderTitle p{
+    margin-top: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.planHeaderTitle > p > span{
+    color: var(--primary-green-text);
+    font-weight: 700;
+}
+
+.planHeaderCards{
+    display: flex;
+    margin-top: 66px;
+}
+
+.planHeaderCard{
+    position: relative;
+    margin-right: 8px;
+    margin-left: 8px;
+    flex: 1;
+    color: var(--primary-green-text);
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    line-height: 36px;
+}
+
+.planHeaderCard:hover{
+    color: var(--primary-green-text);
+}
+
+.planHeaderCard img{
+    width: 100%;
+    height: auto;
+    max-height: 192px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    object-fit: contain;
+    object-position: 50% 0%;
+}
+
+.cardGreenPill{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 8px;
+    padding: 4px 8px;
+    border-radius: 600px;
+    background-color: var(--light-green);
+    color: var(--secondary-green-text);
+    font-size: 14px;
+    line-height: 1em;
+}
+
+.ctaTitle{
+    color: var(--primary-green-text);
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0;
+}
+
+.ctaBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3167ff;
+    color: #fff;
+    padding: 13px 16px 12px;
+    font-size: 18px;
+    line-height: 1.33em;
+    letter-spacing: .5px;
+    text-decoration: none;
+    text-transform: capitalize;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    transition-property: all;
+    transition-duration: .4s;
+}
+
+.ctaBtn:hover{
+    color: #fff;
+    transform: translate(3px,-2px)
+}
+
+
+
+/* Responsive Queries  */
+@media screen and (max-width:1024px) {
+    .planHeaderCard {
+        font-size: 22px;
+    }
+}
+@media screen and (max-width:991px) {
+    .plansHeaderContainer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .planHeaderCards{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 5px;
+    }
+    .planHeaderCard{
+        margin-bottom: 32px;
+        font-size: 28px;
+    }
+    .planHeaderCard img{
+        margin-bottom: 6px;
+        object-fit: cover;
+    }
+    .fullCard{
+        position: relative;
+        width: 95%;
+    }
+    .fullCard img{
+        max-height: 400px;
+        border-radius: 16px;
+        object-position: 50% 0%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .plansHeaderContainer{
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    .planHeaderCards{
+        margin-top: 32px;
+    }
+    .planHeaderCard img{
+        height: 192px;
+        object-fit: cover;
+        object-position: 100% 0;
+    }
+
+    .ctaTitle{
+        margin-top: 0;
+    }
+    .full-in-mobile{
+        display: block;
+        width: 100%;
+    }
+}
