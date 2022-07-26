@@ -258,6 +258,24 @@ img{
     font-weight: 700;
 }
 
+/* Common Questions  */
+.commonQuestionsContainer{
+    display: flex;
+    overflow: hidden;
+    padding: 64px 32px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.commonQuestionsContainerInner{
+    padding-top: 0;
+    padding-right: 52px;
+    padding-left: 52px;
+    width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 
 /* Responsive Queries  */
@@ -271,6 +289,17 @@ img{
         padding-left: 16px;
         padding-right: 16px;
     }
+
+    /* Common Question  */
+    .commonQuestionsContainer{
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    .commonQuestionsContainerInner{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
 }
 
 @media screen and (max-width:767px) {
@@ -297,6 +326,8 @@ img{
         object-position: 50% 0%;
         object-fit: cover;
     }
+
+    
 }
 
 @media screen and (max-width:479px) {
