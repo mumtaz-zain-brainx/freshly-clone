@@ -278,6 +278,99 @@ img{
 }
 
 
+/* Footer  */
+.footer{
+    display: flex;
+    justify-content: center;
+    border-style: solid none none;
+    border-width: 0.5px 1px 1px;
+    border-color: rgba(51,51,51,.2) #000 #000;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 64px 32px;
+}
+
+.footerContent{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    width: 72%;
+    background: transparent;
+}
+
+.footerLogoContainer{
+    display: flex;
+    width: 25%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.footerLogoContainer .logoSub{
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+.footerContent h3{
+    width: 100%;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 0;
+    margin-bottom: 16px;
+    line-height: 1.2em;
+}
+
+.footerlink{
+    align-items: flex-start;
+    transition: color .2s;
+    color: #666;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 16px;
+}
+
+.footerContent a{
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.footerSocials{
+    display: flex;
+    flex-direction: column;
+    width: 136px;
+}
+.footerContent .icons a{
+    max-width: 100%;
+    display: inline-block;
+    margin-right: 20px;
+    opacity: .65;
+}
+
+
+.footerContent .horiz{
+    margin-bottom: 32px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footerContent .footerLinks{
+    width: 50%;
+}
+
 /* Responsive Queries  */
 @media screen and (max-width:1024px) {
     .planHeaderCard {
@@ -327,6 +420,24 @@ img{
         object-fit: cover;
     }
 
+
+    /* Footer  */
+    .footer{
+        padding-top: 32px;
+        padding-bottom: 32px;
+        margin-bottom: 0px;
+    }
+    .footerContent{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        width: 100%;
+        background: transparent;
+    }
+    .footerLogoContainer{
+        display: none;
+    }
     
 }
 
@@ -362,5 +473,11 @@ img{
     }
     .serviceCardContent{
         margin-bottom: 32px;
+    }
+
+    /* Footer  */
+
+    .footerContent .footerLinks{
+        width: 100%;
     }
 }
