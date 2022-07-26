@@ -259,6 +259,7 @@ img{
 }
 
 
+
 /* Responsive Queries  */
 @media screen and (max-width:1024px) {
     .planHeaderCard {
@@ -299,6 +300,7 @@ img{
 }
 
 @media screen and (max-width:479px) {
+    /* Plan Header  */
     .planContainer{
         padding-top: 32px;
         padding-bottom: 32px;
@@ -319,5 +321,15 @@ img{
     .full-in-mobile{
         display: block;
         width: 100%;
+    }
+
+
+    /* Services  */
+    .serviceCards{
+        flex-direction: column;
+        align-items: center;
+    }
+    .serviceCardContent{
+        margin-bottom: 32px;
     }
 }
