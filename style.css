@@ -37,6 +37,29 @@ a{
 }
 
 
+h1 {
+    margin: 0 0 24px;
+    color: #333;
+    font-size: 3rem;
+    line-height: 1.08em;
+    font-weight: 700;
+}
+
+h4{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.5rem;
+    line-height: 1.25em;
+    font-weight: 700;
+}
+
+img{
+    border: 0;
+    max-width: 100%;
+    display: block;
+}
 
 .primary-button{
     display: inline-block;
@@ -45,15 +68,17 @@ a{
 
 /* --------------------------------Plans Section--------------------------------  */
 
-/* Plans Header  */
-.plansHeaderContainer{
+.planContainer{
     background: var(--light-yellow);
     padding: 64px 32px;
 }
 
-.plansHeaderContainerInner{
+/* Plans Header  */
+
+.planContainerInner{
     max-width: 1440px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .planHeaderTitle{
@@ -167,6 +192,72 @@ a{
 }
 
 
+/* Plan Services  */
+.servicesContainer{
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.servicesTitle{
+    margin-bottom: 70px;
+}
+
+.servicesTitle h1{
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0 0 24px;
+    margin-bottom: 10px;
+    color: #333;
+    line-height: 1.08em;
+}
+
+.servicesSubTitle{
+    max-width: 610px;
+    margin: 32px auto;
+}
+
+.serviceCards{
+    display: flex;
+    max-width: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.serviceCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding-right: 7px;
+    padding-left: 7px;
+    text-align: center;
+}
+
+.serviceCardContent{
+    display: flex;
+    height: 100%;
+    max-width: 220px;
+    flex-direction: column;
+    align-items: center;
+}
+.serviceCardContent img{
+    height: 190px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.serviceCardContent h4{
+    margin-top: 0;
+}
+.serviceCardDetails{
+    max-width: 200px;
+}
+.serviceCardContent a{
+    display: inline-block;
+    margin-top: 24px;
+    font-weight: 700;
+}
+
 
 /* Responsive Queries  */
 @media screen and (max-width:1024px) {
@@ -175,7 +266,7 @@ a{
     }
 }
 @media screen and (max-width:991px) {
-    .plansHeaderContainer {
+    .planContainer {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -208,7 +299,7 @@ a{
 }
 
 @media screen and (max-width:479px) {
-    .plansHeaderContainer{
+    .planContainer{
         padding-top: 32px;
         padding-bottom: 32px;
     }
