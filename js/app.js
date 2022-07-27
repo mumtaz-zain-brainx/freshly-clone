@@ -27,8 +27,10 @@ $(document).ready(function(){
             </li>`
         }
         $(".dateList").append(listItem);
-
     }
+    let delivDate = new Date()
+    delivDate.setDate(delivDate.getDate() + 1);
+    $("#firstDeliveryDate").append(`<span>${dayNames[delivDate.getDay()]}, ${monthNames[delivDate.getMonth()]} ${delivDate.getDate()}</span>`)
 
     // Adding active class to DateListItems 
     $(".dateListItem").click(function(){
