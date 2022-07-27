@@ -11,14 +11,14 @@ $(document).ready(function(){
         let listItem = 
         `<li class="dateListItem">
             <div>
-                <span class="fw-semibold">${dayNames[d.getDay()]}</span><span>, ${monthNames[d.getMonth()]} ${d.getDate()}</span>
+                <span class="fw-semibold" id="deliveryDay">${dayNames[d.getDay()]}</span><span id="deliveryDate">, ${monthNames[d.getMonth()]} ${d.getDate()}</span>
             </div>
         </li>`
-        if(d.getDay()==0){
+        if(i==1){
             listItem = 
-            `<li class="dateListItem d-flex justify-content-between align-items-center">
+            `<li class="dateListItem dateListItemActive d-flex justify-content-between align-items-center">
                 <div>
-                    <span class="fw-semibold">${dayNames[d.getDay()]}</span><span>, ${monthNames[d.getMonth()]} ${d.getDate()}</span>
+                    <span class="fw-semibold" id="deliveryDay">${dayNames[d.getDay()]}</span><span id="deliveryDate">, ${monthNames[d.getMonth()]} ${d.getDate()}</span>
                 </div>
                 <div class=" d-flex align-items-center justify-content-center">
                     <span class="text-primary d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24"><path d="M16.015 21.94l5.573 2.93-1.064-6.205 4.508-4.395-6.23-.905-2.786-5.646-2.786 5.646-6.231.905 4.508 4.395-1.064 6.205 5.573-2.93zm0 2.26l-8.229 4.326 1.572-9.163-6.657-6.489 9.2-1.337L16.015 3.2l4.114 8.337 9.2 1.337-6.657 6.489 1.572 9.163-8.229-4.326z"></path></svg></span>
@@ -30,11 +30,13 @@ $(document).ready(function(){
     }
     let delivDate = new Date()
     delivDate.setDate(delivDate.getDate() + 1);
-    $("#firstDeliveryDate").append(`<span>${dayNames[delivDate.getDay()]}, ${monthNames[delivDate.getMonth()]} ${delivDate.getDate()}</span>`)
-
-    // Adding active class to DateListItems 
+    $("#firstDeliveryDate").text(`${dayNames[delivDate.getDay()]}, ${monthNames[delivDate.getMonth()]} ${delivDate.getDate()}`)
+    
+    // Adding active class to DateListItems and changing first delivery date
     $(".dateListItem").click(function(){
         $(".dateListItem").filter(".dateListItemActive").removeClass("dateListItemActive");
         $(this).addClass("dateListItemActive");
+
+        $("#firstDeliveryDate").text(`${$(this).find("#deliveryDay").text()}${$(this).find("#deliveryDate").text()}`)
     })
 });
