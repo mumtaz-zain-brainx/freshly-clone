@@ -11,6 +11,7 @@
     --light-green: #85e5c6;
     --primary-green-text: #357471;
     --secondary-green-text: #323232;
+    --red-text: #ff3131;
     --default-text: #333;
 }
 
@@ -374,6 +375,7 @@ img{
 
 /* -------------------------------- Plans Section End --------------------------------  */
 
+/* -------------------------------- Date Section Starts --------------------------------  */
 .dateContainer{
     max-width: 1366px;
     background: var(--light-yellow);
@@ -440,6 +442,105 @@ img{
     color: #fff;
     background-color: var(--primary-blue);
 }
+/* -------------------------------- Date Section Ends --------------------------------  */
+
+/* -------------------------------- Menu Section --------------------------------  */
+.menuCart{
+    background-color: #fafafa;
+    border-left: 1px solid #d9d9d9;
+    min-width: 344px;
+    height: 100%;
+}
+.menuCartInner{
+    width: 344px;
+}
+
+.cartContent{
+    margin-bottom: -24px;
+}
+
+.cartContentInner{
+    z-index: 4;
+    width: 344px;
+}
+
+.cartContentHeader{
+    display: flex;
+    height: 48px;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #fff;
+    border: 0.5px solid #f7f7f7;
+}
+
+.cartContentHeaderInner{
+    flex: 1 0 auto;
+}
+.cartContentHeaderInner span{
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: normal;
+    color: #303030;
+}
+
+.cartBtnContainer{
+    z-index: 4;
+    flex-shrink: 0;
+    padding: 16px 16px 32px;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    border-radius: 24px 24px 0 0;
+}
+.cartBtnHeader{
+    display: flex;
+    flex: 0 1 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+.cartBtnHeader .btnIcon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border: 2px solid #d0d0d0;
+    border-radius: 20px;
+    flex: 0 0 80px;
+}
+.cartIconCounter{
+    height: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 20px;
+    color: var(--red-text);
+}
+.cartBtn{
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: normal;
+    color: #fff;
+    appearance: none;
+    background-color: #2a6dff;
+    cursor: pointer;
+    outline: none;
+    height: 44px;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 100%;
+    transition: background-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    border-radius: 0;
+    height: 40px;
+}
+.cartBtnDisabled{
+    color: #d0d0d0;
+    background-color: #ededed;
+    border-color: #ededed;
+}
+
 
 
 /* -------------------------------- Responsive Queries --------------------------------  */
@@ -464,6 +565,11 @@ img{
         padding-right: 0;
     }
     
+}
+@media (min-width: 768px){
+    #menu{
+        height: 100vh;
+    }
 }
 
 @media screen and (max-width:767px) {
