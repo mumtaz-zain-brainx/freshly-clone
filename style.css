@@ -6,6 +6,7 @@
 
 :root{
     --primary-blue: #094fdb;
+    --secondary-blue: #2a6dff;
     --light-yellow: #fffdf7;
     --light-green: #85e5c6;
     --primary-green-text: #357471;
@@ -371,7 +372,77 @@ img{
     width: 50%;
 }
 
-/* Responsive Queries  */
+/* -------------------------------- Plans Section End --------------------------------  */
+
+.dateContainer{
+    max-width: 1366px;
+    background: var(--light-yellow);
+}
+
+
+.scrollableDatePicker{
+    position: relative;
+    max-height: 273px;
+    overflow-x: auto;
+}
+
+.scrollableDatePicker ul{
+    border-radius: 0;
+    list-style: none;
+}
+
+.dateListItem{
+    position: relative;
+    background: white;
+    padding: 14px 20px;
+    margin:0 8px -1px;
+    border: 1px solid #717171;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.dateListItem:hover{
+    transform: translate(5px);
+    box-shadow: 0 0 .5px black;
+    z-index: 2;
+}
+
+
+.dateListItem:focus{
+    transform: translate(5px);
+}
+
+.dateListItemActive{
+    background: var(--light-yellow);
+    border-left: 8px solid var(--secondary-blue);
+}
+
+.dateBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-blue);
+    color: #fff;
+    padding: 13px 16px 12px;
+    font-size: 18px;
+    line-height: 1.33em;
+    letter-spacing: .5px;
+    text-decoration: none;
+    text-transform: capitalize;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    transition-property: all;
+    transition-duration: .4s;
+}
+.dateBtn:hover{
+    color: #fff;
+    background-color: var(--primary-blue);
+}
+
+
+/* -------------------------------- Responsive Queries --------------------------------  */
 @media screen and (max-width:1024px) {
     .planHeaderCard {
         font-size: 22px;

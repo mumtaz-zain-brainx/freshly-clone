@@ -22,7 +22,7 @@
 <body>
     <main>
         <!-- Plans Section  -->
-        <section>
+        <section id="plans">
             <!-- Header  -->
             <div class="planContainer">
                 <div id="new-plans" class="planContainerInner">
@@ -294,7 +294,146 @@
             </div>
         </section>
 
-
+        <!-- Date Section -->
+        <section id="date"  style="background: #fffdf7;">
+            <div class="dateContainer container-fluid">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1 class="my-5 text-capitalize">Choose a Delivery Day</h1>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto">
+                        <div data-react-class="JoinNowDatePicker">
+                            <div class="mt-2 mt-md-n2" >
+                                <div class="scroll-indicator text-center mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 11 10" width="16" height="16" class="invisible"><path d="M5.25 1.75l5 5-1.5 1.5-3.5-3.75-3.5 3.75-1.5-1.5z"></path></svg>
+                                </div>
+                                <div id="datePickerContainer" class="scrollableDatePicker mb-3">
+                                    <ul role="listbox" data-test="weekly-delivery-day-picker" class="py-0 mb-2 list-group dateList">
+                                        <li role="option" aria-selected="true" tabindex="0" data-test="earliest-delivery-date" class="d-flex justify-content-between align-items-center dateListItem d-none">
+                                            <div>
+                                                <span class="fw-semibold">Sunday</span><span>, Jul 31</span>
+                                            </div>
+                                            <div class=" d-flex align-items-center justify-content-center">
+                                                <span class="text-primary d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24"><path d="M16.015 21.94l5.573 2.93-1.064-6.205 4.508-4.395-6.23-.905-2.786-5.646-2.786 5.646-6.231.905 4.508 4.395-1.064 6.205 5.573-2.93zm0 2.26l-8.229 4.326 1.572-9.163-6.657-6.489 9.2-1.337L16.015 3.2l4.114 8.337 9.2 1.337-6.657 6.489 1.572 9.163-8.229-4.326z"></path></svg></span>
+                                                <span class="ms-1">Most popular</span>
+                                            </div>
+                                        </li>
+                                        <li class="dateListItem d-none">
+                                            <div>
+                                                <span class="fw-semibold">Thursday</span><span>, Aug 4</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="scroll-indicator text-center mb-2">
+                                    <p class="small mb-0">Scroll for more delivery dates</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 11 10" width="16" height="16" class=""><path d="M5.25 8.25l-5-5 1.5-1.5 3.5 3.75 3.5-3.75 1.5 1.5z"></path></svg>
+                                </div>
+                                <div class="mx-2 d-flex flex-column align-items-center">
+                                    <a href="#menu" data-test="submit-date" class="mb-2 primary-button w-100 fw-semibold dateBtn">Next</a>
+                                    <p class="small text-center mt-4 fw-semibold"><span>First Delivery Date: </span><span>Sunday, Jul 31</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- Common Questions -->
+                <div class="commonQuestionsContainer">
+                    <div class="commonQuestionsContainerInner">
+                        <div class="text-center">
+                            <h1>Common Questions</h1>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item py-3 bg-transparent">
+                                <h2 class="accordion-header text-center" id="flush-headingOne">
+                                    <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <div class="w-100 text-center text-md-start">How many servings are your meals?</div>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>With a selection that spans nourishing breakfasts, lunches, and dinners, the majority of our meals are single serving and perfectly sized for 1 person to enjoy at 1 sitting. We also offer multi-serve proteins and sides, which are designed to feed multiple people for extra mealtime flexibility. These delicious, ready-to-heat options can help you bulk up existing meals, simplify home cooking, or even build an entire meal—the choice is yours!<br><br>We offer anywhere from 4–12 meals per week, with meals as low as $8.99 each—and you always have the freedom to flex your number of meals up each week to add on breakfast items*, which are unlocked upon your second order. On average, our meals weigh in at about 13 ounces and range from 300 to 650 calories. If you have a larger household, we do offer a 12 meal per week subscription (it’s ideal for couples or a family of 4 looking for 3 meals per week). Plus, you can always order multiple subscriptions. We may be biased, but there’s no better feeling than a fridge full of Freshly!<br><br>*Each breakfast item counts towards your 12-meal&nbsp;maximum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item py-3 bg-transparent">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        <div class="w-100 text-center text-md-start">
+                                            Do you accommodate dietary preferences?
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p><em class="italic-text-4">We accommodate a variety of dietary preferences, including gluten-free, dairy-free, peanut-free, plant-based, low-calorie, and carb-conscious options. As a customer, you can set your own dietary preferences and easily find the meals that work for you. You can also check out individual ingredient lists for each dish if you have specific concerns, or chat with one of our Menu Experts for help making selections. You can find their hours and contact options </em><a href="#"><em class="italic-text-4">here</em></a><em class="italic-text-4">.<br><br>If you’re unable to place an order that fits your preferences now, be sure to check back frequently as we’re always adding new and exciting dishes.<br>‍<br>‍</em><strong><em class="italic-text-4">Please note: </em></strong><em class="italic-text-4">Our Menu Experts are not healthcare providers and are unable to provide medical advice. We always recommend consulting your physician or nutritionist if you have any specific health&nbsp;concerns.</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item py-3 bg-transparent">
+                                <h2 class="accordion-header" id="flush-headingThree">
+                                    <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                        <div class="w-100 text-center text-md-start">
+                                            How long do the meals last?
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>Our meals are chef prepared and delivered fresh, so typically they have a refrigerated shelf life of about 3-5 days. Select items (such as seafood) are best eaten first, so we’ll add a badge on the package to let you know. We usually suggest enjoying these meals within the first few days of receiving your order, but you can always check their exact use-by date on the back-of-pack nutrition label. If you’re ever unable to finish your meals within their shelf life, you can always pop them into the freezer for extended storage. Just be sure to microwave your meal straight from the freezer and add a few extra minutes to reach the 165° F internal temperature we&nbsp;recommend.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item py-3 bg-transparent">
+                                <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                        <div class="w-100 text-center text-md-start">
+                                            How do I heat up my meals?
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>Your meals will come to you fully prepared so you just have to heat ‘em up in the microwave. On the back of each meal, you’ll find our easy steps for heating, but generally, the meals heat up in about 3 minutes (depending on your microwave). If you’re unsure, start at 2 minutes and heat in 30–second increments until the meal reaches an inner temperature of 165° F. Our meals are packaged to be heated in the microwave (for the ultimate convenience), but you can heat them in the oven if you’d like. Just so you know, our current meal containers aren’t safe for the oven or stovetop, so you’ll have to transfer your food to heat it up. You can check out the full oven reheat directions in our <a href="" &nbsp;target="_blank">FAQs</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item py-3 bg-transparent">
+                                <h2 class="accordion-header" id="flush-headingFive">
+                                    <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                        <div class="w-100 text-center text-md-start">
+                                            How does shipping work?
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>To help guarantee your meals arrive in the freshest condition, there is a small shipping fee associated with your order. We deliver to all states within the continental U.S., and our shipping partners offer delivery every day of the week. The exact days that we can reach you will depend on your ZIP code and the carrier delivering your Freshly meals. Whether you're signing up or updating your typical delivery day, we'll show you all the days available to you so you can choose what's best for&nbsp;you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item py-3 bg-transparent">
+                                <h2 class="accordion-header" id="flush-headingSix">
+                                    <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                                        <div class="w-100 text-center text-md-start">
+                                            How does subscription work?
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>Every week you get to pick your selection of meals from our weekly rotation of 50+ options. Choose any number of meals between 4 and 12 per week, with meals as low as $8.99 each. You'll pick the most convenient delivery day for you, and we'll ship your chef-cooked meals right to your doorstep! If you ever need to skip or cancel a week, or size your order up or down, it's easy to make changes to your upcoming delivery before the weekly&nbsp;deadline.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     
