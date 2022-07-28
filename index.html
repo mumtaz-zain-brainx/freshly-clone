@@ -323,7 +323,7 @@
                                 </div>
                                 <div id="datePickerContainer" class="scrollableDatePicker mb-3">
                                     <ul role="listbox" data-test="weekly-delivery-day-picker" class="py-0 mb-2 list-group dateList">
-                                        <li role="option" aria-selected="true" tabindex="0" data-test="earliest-delivery-date" class="d-flex justify-content-between align-items-center dateListItem d-none">
+                                        <!-- <li role="option" aria-selected="true" tabindex="0" data-test="earliest-delivery-date" class="d-flex justify-content-between align-items-center dateListItem d-none">
                                             <div>
                                                 <span class="fw-semibold">Sunday</span><span>, Jul 31</span>
                                             </div>
@@ -336,7 +336,7 @@
                                             <div>
                                                 <span class="fw-semibold">Thursday, Aug 4</span>
                                             </div>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                                 <div class="scroll-indicator text-center mb-2">
@@ -468,12 +468,7 @@
                             <!-- Header Date  -->
                             <div class="d-flex justify-content-center align-items-center flex-grow-1 col-auto col-md-auto">
                                 <div class="d-md-block mx-auto">
-                                    <select class="form-select border-0 fw-bold" aria-label="Default select example">
-                                        <option value="2022-07-31" selected>Sunday, Jul 31</option>
-                                        <option value="2022-08-03">Wednesday, Aug 3</option>
-                                        <option value="2022-08-04">Thursday, Aug 4</option>
-                                        <option value="2022-08-05">Friday, Aug 5</option>
-                                        <option value="2022-08-07">Sunday, Aug 7</option>
+                                    <select id="menuDateSelector" class="form-select border-0 fw-bold" aria-label="Default select example">
                                     </select>
                                 </div>
                             </div>
@@ -761,7 +756,7 @@
                                             <div class="position-sticky top-0" style="z-index: 5;">
                                                 <div class="cartContentHeader">
                                                     <div class="cartContentHeaderInner">
-                                                        <span class="MealsHeader-module__text___3mlyz">My delivery for: <b>Monday, Aug 8</b></span>
+                                                        <span class="MealsHeader-module__text___3mlyz">My delivery for: <b class="cartDate">Monday, Aug 8</b></span>
                                                     </div>
                                                 </div>
                                             </div>

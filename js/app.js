@@ -1,9 +1,15 @@
 $(document).ready(function(){
 
-
-    // Displaying Dates 
+    // Global Variable 
     const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+
+    var selectedDate = "";
+
+
+    /* ----------------- Date Section -----------------*/
+
+    // Displaying Dates 
     for(let i=1; i <= 10; i++){
         let d = new Date()
         d.setDate(d.getDate() + i);
@@ -28,15 +34,61 @@ $(document).ready(function(){
         }
         $(".dateList").append(listItem);
     }
+
+    // Setting Current date on firstDeliveryDate & cartDate elements.
     let delivDate = new Date()
     delivDate.setDate(delivDate.getDate() + 1);
-    $("#firstDeliveryDate").text(`${dayNames[delivDate.getDay()]}, ${monthNames[delivDate.getMonth()]} ${delivDate.getDate()}`)
+    selectedDate = `${dayNames[delivDate.getDay()]}, ${monthNames[delivDate.getMonth()]} ${delivDate.getDate()}`
+    $("#firstDeliveryDate").text(selectedDate)
+    $(".cartDate").text(selectedDate)
+
     
-    // Adding active class to DateListItems and changing first delivery date
+    // Adding active class to DateListItems 
     $(".dateListItem").click(function(){
         $(".dateListItem").filter(".dateListItemActive").removeClass("dateListItemActive");
+
         $(this).addClass("dateListItemActive");
 
-        $("#firstDeliveryDate").text(`${$(this).find("#deliveryDay").text()}${$(this).find("#deliveryDate").text()}`)
+        // Updating date on firstDeliveryDate, cartDate & menuDateSelector elements.
+        selectedDate = `${$(this).find("#deliveryDay").text()}${$(this).find("#deliveryDate").text()}`
+        $("#firstDeliveryDate").text(selectedDate)
+        $(".cartDate").text(selectedDate)
+        $('#menuDateSelector').val(selectedDate).trigger('change');
+
     })
+
+
+
+    /* ----------------- Menu Section -----------------*/
+    
+    // Displaying dates on Menu Header date-selector 
+    for(let i=1; i <= 10; i++){
+        let d = new Date()
+        d.setDate(d.getDate() + i);
+
+        let itemDate = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+        let itemDayDate = `${dayNames[d.getDay()]}, ${monthNames[d.getMonth()]} ${d.getDate()}`
+
+        let selectItem = `<option value="${itemDayDate}">${itemDayDate}</option>`
+
+        $("#menuDateSelector").append(selectItem);
+    }
+
+
+    $("#menuDateSelector").change(function(){
+        let optDate = this.value;
+        selectedDate = optDate
+        // Updating date on firstDeliveryDate & cartDate elements
+        $("#firstDeliveryDate").text(selectedDate)
+        $(".cartDate").text(selectedDate)
+
+        // Updating date on Date Section Page
+        $(".dateListItem").filter(function(){
+            let temp = `${$(this).find("#deliveryDay").text()}${$(this).find("#deliveryDate").text()}`
+            if(temp== selectedDate){
+                $(".dateListItem").filter(".dateListItemActive").removeClass("dateListItemActive");
+                $(this).addClass("dateListItemActive");
+            }
+        });
+    });
 });
