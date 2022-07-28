@@ -8,6 +8,7 @@
     --primary-blue: #094fdb;
     --secondary-blue: #2a6dff;
     --light-yellow: #fffdf7;
+    --secondary-light-yellow: #fef9eb;
     --light-green: #85e5c6;
     --primary-green-text: #357471;
     --secondary-green-text: #323232;
@@ -55,6 +56,15 @@ h4{
     font-size: 1.5rem;
     line-height: 1.25em;
     font-weight: 700;
+}
+
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: normal;
 }
 
 img{
@@ -446,7 +456,13 @@ img{
 
 /* -------------------------------- Menu Section --------------------------------  */
 
+#menu{
+    height: 100vh;
+}
+
 /* Menu Grid Styles  */
+
+
 .menuGridHeader{
     min-height: 3rem;
     position: sticky;
@@ -471,6 +487,98 @@ img{
     text-decoration: underline;
 }
 
+.menuGridNav{
+    padding-left: 16px;
+    z-index: 999;
+    min-height: 52px;
+    background: var(--light-yellow);
+    border-top: 2px solid var(--secondary-light-yellow);
+    border-bottom: 2px solid var(--secondary-light-yellow);
+}
+
+.menuGridNav .title{
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    color: #303030;
+}
+
+.menuGridNav button{
+    height: 100%;
+    padding: 0 16px;
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 1.14;
+    color: var(--secondary-blue);
+    background: var(--secondary-light-yellow);
+    border: none;
+}
+.menuGridNav button:hover{
+    background: var(--secondary-blue);
+    color: white;
+}
+
+
+.menuGridContent{
+    background: var(--light-yellow);
+}
+
+.menuCard{
+    display: flex;
+    flex-direction: column;
+}
+
+.menuCardImg{
+    border-radius: 16px;
+    min-height: 190px;
+    max-height: 190px;
+    height: 190px;
+    max-width: none;
+}
+.menuCardImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s ease-in-out;
+}
+.menuCard:hover img{
+    transform: scale(1.1);
+}
+
+.menuCardContent{
+    margin: 16px 0 0;
+}
+
+.menuCardSubtitle{
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--primary-green-text);
+    margin-bottom: 16px;
+}
+
+.menuCardBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: #2a6dff;
+    background-color: var(--secondary-blue);
+    border-radius: 20px;
+    transition: box-shadow .2s,background-color .2s;
+}
+.menuCardBtn:hover{
+    background-color: var(--primary-blue);
+}
+
 
 /* Menu Cart Styles  */
 .menuCart{
@@ -479,8 +587,12 @@ img{
     min-width: 344px;
     height: 100%;
 }
+
 .menuCartInner{
+    position: relative;
     width: 344px;
+    height: 100%;
+    user-select: none;
 }
 
 .cartContent{
@@ -520,6 +632,7 @@ img{
     border: 1px solid #ededed;
     border-radius: 24px 24px 0 0;
 }
+
 .cartBtnHeader{
     display: flex;
     flex: 0 1 100%;
@@ -527,6 +640,7 @@ img{
     align-items: flex-end;
     margin-bottom: 16px;
 }
+
 .cartBtnHeader .btnIcon{
     display: flex;
     justify-content: space-between;
@@ -536,6 +650,7 @@ img{
     border-radius: 20px;
     flex: 0 0 80px;
 }
+
 .cartIconCounter{
     height: 20px;
     font-size: 1rem;
@@ -543,6 +658,7 @@ img{
     line-height: 20px;
     color: var(--red-text);
 }
+
 .cartBtn{
     font-size: 1.125rem;
     font-weight: 600;
@@ -564,6 +680,7 @@ img{
     border-radius: 0;
     height: 40px;
 }
+
 .cartBtnDisabled{
     color: #d0d0d0;
     background-color: #ededed;
@@ -578,6 +695,7 @@ img{
         font-size: 22px;
     }
 }
+
 @media screen and (max-width:991px) {
     .planContainer {
         padding-left: 16px;
@@ -594,11 +712,6 @@ img{
         padding-right: 0;
     }
     
-}
-@media (min-width: 768px){
-    #menu{
-        height: 100vh;
-    }
 }
 
 @media screen and (max-width:767px) {
@@ -645,6 +758,62 @@ img{
         display: none;
     }
     
+
+    /* Menu styles  */
+
+
+    .menuContainer{
+        overflow: initial;
+        height: 100%;
+        padding-top: 0;
+    }
+
+    .colMenu{
+        flex: none;
+    }
+    .menuGrid{
+        max-height: 100vh;
+        overflow: auto;
+    }
+    .menuCard{
+        flex-direction:  row;
+    }
+    .menuCardImg{
+        max-width: 30%;
+        min-width: 130px;
+        min-height: 140px;
+        overflow: hidden;
+        border-radius: 16px;
+        height: 130px;
+        width: 90px;
+    }
+    .menuCardContent{
+        margin: 0 0 0 16px;
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 100%;
+        justify-content: space-between;
+    }
+
+    .menuCart{
+        min-width: 200px;
+        border: none;
+    }
+    .menuCartInner{
+        position: fixed;
+        touch-action: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        bottom: 0;
+        left: 0;
+        height: auto;
+        width: 100%;
+        z-index: 1004;
+    }
+
+    .menuCartInnerContainer{
+        max-height: calc(var(--vh, 1vh)*84 + 24px);
+    }
 }
 
 @media screen and (max-width:479px) {
