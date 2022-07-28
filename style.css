@@ -624,7 +624,28 @@ img{
     color: #303030;
 }
 
+.cartContentHeaderBtn{
+    flex: 0 0 auto;
+}
+.cartContentHeaderBtn .btnLink{
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: normal;
+    color: #2a6dff;
+    padding: 0.5rem;
+    cursor: pointer;
+    background-color: transparent;
+    text-decoration: underline;
+    display: none;
+}
 
+
+.cartItem{
+    position: relative;
+    left: -350px;
+    animation: slide 0.4s forwards;
+    animation-delay: 0.4s;
+}
 .cartItemContent{
     display: flex;
     justify-content: space-between;
@@ -690,6 +711,17 @@ img{
     content: "−";
 }
 
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
+.ordSum{
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+
 .cartBtnContainer{
     z-index: 4;
     flex-shrink: 0;
@@ -753,6 +785,14 @@ img{
     border-color: #ededed;
 }
 
+.cartPlaceHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+}
 
 
 /* -------------------------------- Responsive Queries --------------------------------  */
