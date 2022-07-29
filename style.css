@@ -17,7 +17,6 @@
 }
 
 body{
-    font-family: Favoritfreshly,sans-serif;
     color: var(--default-text);
     font-size: .875rem;
     line-height: 1.43em;
@@ -840,7 +839,39 @@ img{
     flex-grow: 1;
     position: relative;
 }
+/* -------------------------------- Menu Section End --------------------------------  */
 
+
+/* -------------------------------- Checkout Section --------------------------------  */
+#checkout{
+    background: var(--light-yellow);
+}
+
+.mealItem{
+    margin: 0 0 1rem;
+}
+.mealItem .count{
+    flex: .8;
+    font-weight: 600;
+    font-size: 16px;
+}
+.mealItem .imgWrapper{
+    flex: 1;
+}
+
+.mealItem .info{
+    flex: 4;
+}
+.mealItem .info > .name{
+    font-size: 14px;
+}
+
+.mealItem .additionalPrice{
+    font-size: 16px;
+    color: var(--primary-green-text);
+}
+
+/* -------------------------------- Checkout Section End --------------------------------  */
 
 /* -------------------------------- Responsive Queries --------------------------------  */
 @media screen and (max-width:1024px) {
