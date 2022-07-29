@@ -627,7 +627,7 @@ img{
 .cartContentHeaderBtn{
     flex: 0 0 auto;
 }
-.cartContentHeaderBtn .btnLink{
+.cartContentHeaderBtn .clearBtn{
     font-size: .875rem;
     font-weight: 400;
     line-height: normal;
@@ -754,7 +754,28 @@ img{
     font-size: 1rem;
     font-weight: 700;
     line-height: 20px;
+}
+.cartIconCounterRed{
     color: var(--red-text);
+}
+
+.btnSubtotalContainer{
+    display: flex;
+    flex-direction: column;
+    flex:0 1 70%;
+}
+.btnSubtotalContainer .discountContainer{
+    display: none;
+    flex: 0 1 auto;
+    align-self: flex-start;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    animation:  .25s ease-in-out both;
+    background-color: var(--primary-green-text);
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 16px;
+    color: #fff;
 }
 
 .cartBtn{
@@ -764,6 +785,7 @@ img{
     color: #fff;
     appearance: none;
     background-color: #2a6dff;
+    text-decoration: none;
     cursor: pointer;
     outline: none;
     height: 44px;
@@ -778,11 +800,36 @@ img{
     border-radius: 0;
     height: 40px;
 }
+.cartBtn:hover{
+    color: #fff;
+    background-color: var(--primary-blue);
+}
 
 .cartBtnDisabled{
     color: #d0d0d0;
     background-color: #ededed;
     border-color: #ededed;
+}
+.cartBtnDisabled:hover{
+    color: #d0d0d0;
+    background-color: #ededed;
+    border-color: #ededed;
+}
+
+.discountMsg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    flex-basis: 16px;
+}
+
+.discountMsg p{
+    margin: 0;
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 16px;
+    color: var(--primary-green-text);
 }
 
 .cartPlaceHolder{

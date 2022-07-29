@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
     // Global Variable 
     const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
@@ -94,12 +97,13 @@ $(document).ready(function(){
 
     
 
-    
+    // Menu Items
     const menuItems = [
         {
             id: "1",
             title:"Steak Peppercorn",
             subTitle: "500 Cal | Gluten Free | Single-Serve",
+            cost: 11.79,
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012873/production-meal-image-2fd3df62-8abf-413e-8650-afca039518ec.jpg",
             imgUrlSub: "https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012875/production-meal-without-background-image-3c327134-2073-4b4a-9e97-a81597e5d689.png",
         },
@@ -107,6 +111,7 @@ $(document).ready(function(){
             id: "2",
             title:"Homestyle Chicken",
             subTitle: "500 Cal | Gluten Free | Single-Serve",
+            cost: 11.79,
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012265/production-meal-image-e4122aa8-0fe7-4854-b6f5-e27e0c5be918.jpg",
             imgUrlSub: "https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012267/production-meal-without-background-image-6cadf26d-addc-4674-bfb3-3255cd770ebd.png",
         },
@@ -114,6 +119,7 @@ $(document).ready(function(){
             id: "3",
             title:"Cauliflower Shell Beef Bolognese",
             subTitle: "490 Cal | Gluten Free | Single-Serve",
+            cost: 11.79,
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012554/production-meal-image-c9eef45a-97a9-487c-9550-71488e5f639a.jpg",
             imgUrlSub: "https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012556/production-meal-without-background-image-964a7d18-a670-4e0d-8007-b50d22d07b79.png",
         },
@@ -121,6 +127,7 @@ $(document).ready(function(){
             id: "4",
             title:"Sausage Baked Penne",
             subTitle: "470 Cal | Gluten Free | Single-Serve",
+            cost: 11.79,
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012391/production-meal-image-f0de55be-d691-4ade-bc26-b4a8aedaa1fe.jpg",
             imgUrlSub:"https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012393/production-meal-without-background-image-4e5dd437-69eb-4ae8-847b-7ea52f687633.png",
         },
@@ -128,12 +135,19 @@ $(document).ready(function(){
             id: "5",
             title:"Savory-Sweet Chicken Teriyaki Bowl",
             subTitle: "480 Cal | Gluten Free | Single-Serve",
+            cost: 11.79,
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012614/production-meal-image-92ec0fc1-d352-4720-9b83-96798ab8d2de.jpg",
             imgUrlSub:"https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012616/production-meal-without-background-image-71dafd36-0f62-46f3-ad7a-16542a12a3f5.png",
         },
     ]
 
+    // Cart Items
     const cartItems = []
+
+
+    // Cart variables
+    var cartSubTotal = 0.0;
+    var cartSubTotalDiscounted = 0.0;
 
     // Generating menu items 
     for(var m of menuItems){
@@ -194,44 +208,153 @@ $(document).ready(function(){
 
         $(".cartIconCounter").text(cartItems.length)// Cart counter Update
 
-        // Clear cart
+
+        // Displaying cart content
         if(cartItems.length > 0){
-            $(".btnLink").show();
-            $(".ordSum").show();
-            $(".cartPlaceHolder").hide();
+            $(".clearBtn").show(); // Showing clear button 
+            $(".ordSum").show(); // Showing order summary
+            $(".cartPlaceHolder").hide(); // Hiding cart placeholder 
+
+            // Calculating cart total & discount
+            cartSubTotal = (cartItems.length * 11.79).toFixed(2);
+            cartSubTotalDiscounted = (cartItems.length * 11.79).toFixed(2);
+
+            // Displaying cart subtotal
+            $(".subtotalIcon").html(
+                `
+                <p class="m-0 me-1">Subtotal</p>
+                <p class="m-0 me-1" style="color:#357471;">$${cartSubTotalDiscounted}</p>
+                `
+            )
+            // Dynamic offer upgrade
+            if(cartItems.length >= 4){
+                if(cartItems.length < 6){
+                    $(".discountMsg").find("p").text(`Add ${6 - cartItems.length} more meals to save $10.80!`) // Updating discount offer message
+                }
+                // Checking the current offer 
+                else if(cartItems.length >= 6){
+                    $(".discountMsg").find("p").text(`The more you add, the more you'll save!`) // Updating discount offer message
+
+                    // Checking offer price
+                    if(cartItems.length<8){
+                        cartSubTotalDiscounted = (cartItems.length * 9.99).toFixed(2);
+                    }
+                    else if(cartItems.length<10){
+                        cartSubTotalDiscounted = (cartItems.length * 9.49).toFixed(2);
+                    }
+                    else if(cartItems.length < 12){
+                        cartSubTotalDiscounted = (cartItems.length * 9.29).toFixed(2);
+                    }
+                    else if(cartItems.length == 12){
+                        cartSubTotalDiscounted = (cartItems.length * 8.99).toFixed(2);
+                    }
+
+                    // Showing discount in order summary
+                    $(".noOfMealsDiscounted").html(
+                        `<p>${cartItems.length} meals discount</p>
+                        <p class="text-secondary">-$${(cartSubTotal-cartSubTotalDiscounted).toFixed(2)}</p>`
+                    )
+                    $(".discountContainer").show(); // Showing offer badge on cart button section
+                    $(".discountContainerCost").text(`You saved $${(cartSubTotal-cartSubTotalDiscounted).toFixed(2)}`) // Updating offer badge on cart button section
+
+                    // Updating cart subtotal with discount price
+                    $(".subtotalIcon").html(
+                        `
+                        <p class="m-0 me-1">Subtotal</p>
+                        <p class="m-0 me-1 text-decoration-line-through text-secondary">$${cartSubTotal}</p>
+                        <p class="m-0 me-1" style="color:#357471;">$${cartSubTotalDiscounted}</p>
+                        `
+                    )
+                }
+            }
+            // Checking cart limit
+            if(cartItems.length >12){
+                $(".noOfMealsDiscounted").empty()
+
+                $(".discountContainer").hide();
+                $(".subtotalIcon").html(
+                    `
+                    <p class="m-0 me-1">Subtotal</p>
+                    <p class="m-0 me-1" style="color:#357471;">$${cartSubTotalDiscounted}</p>
+                    `
+                )
+                $(".cartIconCounter").addClass("cartIconCounterRed");
+                alert($(".cartIconCounter").css("color"));
+                $(".cartBtn").text(`Remove ${cartItems.length-12} To Continue`)
+                $(".cartBtn").addClass("cartBtnDisabled");
+                $(".discountMsg").find("p").text(``)
+                
+
+            }
+
+            // Displaying order summary
+            $(".noOfMeals").html(
+                `<p>${cartItems.length} meals</p>
+                <p>$${cartSubTotal}</p>`
+            )
+            $(".summarySubtotal").html(
+                `<p>Subtotal</p>
+                <p>$${cartSubTotalDiscounted}</p>`
+            )
         }
 
-            // Checkout cart button features
-            if(cartItems.length < 4){
-                $(".cartBtn").text(`Add ${4 - cartItems.length} To Continue`)
-            }
-            if(cartItems.length>=4){
-                $(".cartBtn").removeClass("cartBtnDisabled");
-                $(".cartBtn").text(`Next`)
-            }
+
+        // Updating checkout cart button
+        if(cartItems.length < 4){
+            $(".cartBtn").text(`Add ${4 - cartItems.length} To Continue`)
+            $(".discountContainer").hide();
+        }
+        if(cartItems.length >= 4){
+            $(".cartIconCounter").removeClass("cartIconCounterRed");
+            $(".cartBtn").removeClass("cartBtnDisabled");
+            $(".cartBtn").text(`Next`)
+            $(".cartBtn").attr("href", "#checkout");
+        }
+
     })
 
     // Clear cart button features
     
-    $(".btnLink").click(function(){
-        $("#cartItems").empty();
-        $(".btnLink").hide();
-        $(".ordSum").hide();
-        $(".cartPlaceHolder").show()
+    $(".clearBtn").click(function(){
+
+        $("#cartItems").empty(); // Removing cart elements
+        $(".clearBtn").hide(); // Hiding clear cart button
+        $(".ordSum").hide(); // Hiding cart summary
+        $(".cartPlaceHolder").show() // Displaying cart placeholder
+
+        // Changing cart button accourding to empty cart
         $(".cartBtn").text(`Add 4 To Continue`)
         $(".cartBtn").addClass("cartBtnDisabled");
-        while(cartItems.length>0){
+        $(".cartBtn").attr("href", "#!");
+        $(".discountMsg").find("p").text(``) // Hiding Discount Message
+
+        // Emptying cart
+        while(cartItems.length > 0){
             cartItems.pop()
         }
-        $(".cartIconCounter").text(cartItems.length) // Cart counter Update
+        // Cart counter and subtotal Update
+        $(".discountContainer").hide();
+        $(".cartIconCounter").text(cartItems.length) 
+        $(".cartIconCounter").addClass("cartIconCounterRed");
+
+        // Hiding order summary and cart subtotal
+        $(".noOfMeals").empty()
+        $(".noOfMealsDiscounted").empty()
+        $(".summarySubtotal").empty()
+        $(".subtotalIcon").text(``)
+
+        // Reseting cart total & discount
+        cartSubTotal = 0.0
+        cartSubTotalDiscounted = 0.0
     })
+
 
     // Cart item buttons feature 
     $(".plusBtn").click(function(){
         let li = $(this).parentsUntil("ul");
         let temp = $(li[2]).clone();
 
-        $("#cartItems").append(temp)
+        $("#cartItems").after(temp)
     })
 
     $(".minusBtn").click(function(){

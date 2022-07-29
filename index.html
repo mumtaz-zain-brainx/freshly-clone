@@ -309,6 +309,7 @@
         <!-- Date Section -->
         <section id="date"  style="background: #fffdf7;">
             <div class="dateContainer container-fluid">
+                <!-- Date Section Title  -->
                 <div class="row">
                     <div class="col text-center">
                         <h1 class="my-5 text-capitalize">Choose a Delivery Day</h1>
@@ -322,6 +323,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 11 10" width="16" height="16" class="invisible"><path d="M5.25 1.75l5 5-1.5 1.5-3.5-3.75-3.5 3.75-1.5-1.5z"></path></svg>
                                 </div>
                                 <div id="datePickerContainer" class="scrollableDatePicker mb-3">
+                                    <!-- Date list  -->
                                     <ul role="listbox" data-test="weekly-delivery-day-picker" class="py-0 mb-2 list-group dateList">
                                         <!-- <li role="option" aria-selected="true" tabindex="0" data-test="earliest-delivery-date" class="d-flex justify-content-between align-items-center dateListItem d-none">
                                             <div>
@@ -339,12 +341,17 @@
                                         </li> -->
                                     </ul>
                                 </div>
+
                                 <div class="scroll-indicator text-center mb-2">
                                     <p class="small mb-0">Scroll for more delivery dates</p>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 11 10" width="16" height="16" class=""><path d="M5.25 8.25l-5-5 1.5-1.5 3.5 3.75 3.5-3.75 1.5 1.5z"></path></svg>
                                 </div>
+
+                                <!-- Date Button Section -->
                                 <div class="mx-2 d-flex flex-column align-items-center">
+                                    <!-- Date Button -->
                                     <a href="#menu" data-test="submit-date" class="mb-2 primary-button w-100 fw-semibold dateBtn">Next</a>
+                                    <!-- First Delivery Date -->
                                     <p class="small text-center mt-4 fw-semibold" >
                                         <span>First Delivery Date: </span>
                                         <span id="firstDeliveryDate"></span>
@@ -555,7 +562,7 @@
                     </div>
                 </div>
 
-                <!-- Menu Cart  -->
+                <!-- Menu Cart -->
                 <div class="menuCart">
                     <section class=" menuCartInner">
                         <div class="d-flex flex-column position-relative h-100 menuCartInnerContainer">
@@ -563,21 +570,24 @@
                                 <div class="cartContentInner d-flex flex-grow-1 flex-column align-items-center">
                                     <div class="bg-light w-100 h-100">
                                         <div class="d-flex flex-column flex-grow-1 position-relative w-100 h-100 " >
+                                            <!-- Cart Nav  -->
                                             <div class="position-sticky top-0" style="z-index: 5;">
                                                 <div class="cartContentHeader">
                                                     <div class="cartContentHeaderInner">
                                                         <span class="MealsHeader-module__text___3mlyz">My delivery for: <b class="cartDate">Monday, Aug 8</b></span>
                                                     </div>
                                                     <div class="cartContentHeaderBtn">
-                                                        <div class="btnLink" role="button" tabindex="0" data-test-type="cart__clear-all">Clear all</div>
+                                                        <div class="clearBtn" role="button" tabindex="0" data-test-type="cart__clear-all">Clear all</div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <!-- Cart Content  -->
                                             <div class="d-flex flex-column flex-grow-1 position-relative align-items-center overflow-auto">
-                                                <!-- Cart Items  -->
                                                 <div class="w-100 pb-4">
+                                                    <!-- Cart Items  -->
                                                     <ul id="cartItems" class="w-100 list-unstyled pt-1 px-0 pb-0 mt-0 mx-0 mb-2">
-                                                        <li class="cartItem">
+                                                        <!-- <li class="cartItem">
                                                             <div class="cartItemContent">
                                                                 <figure class="d-flex align-items-center w-100 m-0" role="button" tabindex="0">
                                                                     <img src="https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012393/production-meal-without-background-image-4e5dd437-69eb-4ae8-847b-7ea52f687633.png" class="cartItemImg" alt="Sausage Baked Penne">
@@ -595,15 +605,25 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </li>
+                                                        </li> -->
                                                     </ul>
+                                                    <!-- Cart order summary  -->
                                                     <div class=" pt-2 px-3 pb-0 ordSum">
                                                         <div class="d-flex justify-content-between">
                                                             <p class="text-dark fw-semibold">Order Summary</p>
                                                         </div>
-                                                        <div class="d-flex justify-content-center text-dark" style="font-size: 12px;">Tax and shipping added at checkout</div>
+                                                        <div class="d-flex justify-content-between noOfMeals">
+                                                        </div>
+                                                        <div class="d-flex justify-content-between noOfMealsDiscounted">
+                                                        </div>
+                                                        <div class="d-flex justify-content-between fw-bold summarySubtotal">
+                                                        </div>
+                                                        <div class="d-flex justify-content-center text-dark" style="font-size: 12px;">
+                                                            Tax and shipping added at checkout
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <!-- Cart Placeholder  -->
                                                 <div class="cartPlaceHolder">
                                                     <div class="EmptyCart-module__emptyContainer___1QFUr EmptyCart-module__flexiblePlans___528pA d-flex flex-column justify-content-center align-items-center w-100 mb-5 text-center h-auto">
                                                         <div>Get started by adding at least 4 meals</div>
@@ -614,20 +634,40 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div><div class="Toastr-module__container___2o2Fg"></div></div>
+                            
+                            <!-- Cart footer Section -->
                             <footer role="button" class=" d-block cartBtnContainer pb-5" tabindex="0" data-test-type="cart-footer">
                                 <div class="d-flex flex-column">
+                                    <!-- Cart footer Header  -->
                                     <div class="FlexibleCartFooter-module__summaryContainer___16u4r cartBtnHeader">
-                                        <div class="d-flex flex-column" style="flex:0 1 70%;"></div>
+                                        <div class="btnSubtotalContainer">
+                                            <div class="discountContainer">
+                                                <span>
+                                                    <div class="d-flex align-items-center">
+                                                        <div role="button" tabindex="0" class="me-1 offerIcon" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="6 meals: $9.99/meal">
+                                                            <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M7.334 7.333h1.333v4H7.334zm0-2.666h1.333V6H7.334z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M8 15.333A7.333 7.333 0 1 0 8 .667a7.333 7.333 0 0 0 0 14.666zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" fill="currentColor"></path></svg>
+                                                        </div>
+                                                        <span class="discountContainerCost"></span>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="subtotalIcon d-flex flex-row fs-6 fw-semibold" ></div>
+                                        </div>
                                         <div class="btnIcon" data-test="cart-counter">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5 17a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm0 1.667a.833.833 0 1 0 0 1.666.833.833 0 0 0 0-1.666zM9.5 17a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm0 1.667a.833.833 0 1 0 0 1.666.833.833 0 0 0 0-1.666zM1 4v2h3l2.5 10H20l3-10s-1.833 1-2.5 1l-2 7H8L5.5 4H1z" fill="#000"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M8 6h15l-1.035 2H8.517L8 6z" fill="#000"></path>
                                             </svg>
-                                            <div class="cartIconCounter">0</div>
+                                            <div class="cartIconCounter cartIconCounterRed">0</div>
                                         </div>
                                     </div>
-                                    <div class="cartBtn cartBtnDisabled" role="button" tabindex="0" data-test="submit-cart" data-test-type="cart__confirm-button" data-test-disabled="true">Add 4 To Continue</div>
-                                    <div class="DynamicUpgradeMessage-module__container___3bj_5"></div>
+
+                                    <!-- Cart Button  -->
+                                    <a href="#!" class="cartBtn cartBtnDisabled" role="button" tabindex="0" data-test="submit-cart" data-test-type="cart__confirm-button" data-test-disabled="true">Add 4 To Continue</a>
+                                    <div class="discountMsg">
+                                        <p></p>
+                                    </div>
                                 </div>
                             </footer>
                         </div>
