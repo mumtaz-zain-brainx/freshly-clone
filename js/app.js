@@ -403,12 +403,135 @@ $(document).ready(function(){
     
     /* ---------------------- Checkout Section ---------------------- */
 
+    // Checkout Form
+
+    // Form Validation 
+    var _firstName = "";
+    var _lastName = "";
+    var _fullName = "";
+    var _addressLine1 = "";
+    var _addressLine2 = "";
+    var _city = "";
+    var _phone = "";
+    var _email = "";
+
+    $("#firstName").focusout(function(){
+        var val = $(this).val();
+        if(val.length <= 0 || !val.trim()){    
+            $(this).siblings(".errerMsg").text("Can't be blank");
+            $(this).css("border-color","red");
+            _firstName = ""
+        } else{
+            $(this).siblings(".errerMsg").text("")
+            $(this).css("border-color","black");
+            _firstName = val;
+        }
+    })
+
+    $("#lastName").focusout(function(){
+        var val = $(this).val();
+        if(val.length <= 0 || !val.trim()){    
+            $(this).siblings(".errerMsg").text("Can't be blank");
+            $(this).css("border-color","red");
+            _lastName = ""
+        } else{
+            $(this).siblings(".errerMsg").text("")
+            $(this).css("border-color","black");
+            _lastName = val;
+        }
+    })
+
+    $("#fullName").focusout(function(){
+        var val = $(this).val();
+        if(val.length <= 0 || !val.trim()){    
+            $(this).siblings(".errerMsg").text("Can't be blank");
+            $(this).css("border-color","red");
+            _fullName = ""
+        } else{
+            $(this).siblings(".errerMsg").text("")
+            $(this).css("border-color","black");
+            _fullName = val;
+        }
+    })
+
+    $("#addressCheckBox").click(function(){
+        $(".addressCheckBoxContainer").empty();
+        $("#fullName").prop("disabled", false)
+    })
+
+    $("#line1").focusout(function(){
+        var val = $(this).val();
+        if(val.length <= 0 || !val.trim()){    
+            $(this).siblings(".errerMsg").text("Can't be blank");
+            $(this).css("border-color","red");
+            _addressLine1 = ""
+        } else{
+            $(this).siblings(".errerMsg").text("")
+            $(this).css("border-color","black");
+            _addressLine1 = val;
+        }
+    })
+    
+    $("#line2").focusout(function(){
+        var val = $(this).val();
+        _addressLine2 = val;
+    })
+    
+    $("#city").focusout(function(){
+        var val = $(this).val();
+        if(val.length <= 0 || !val.trim()){    
+            $(this).siblings(".errerMsg").text("Can't be blank");
+            $(this).css("border-color","red");
+            _city = ""
+        } else{
+            $(this).siblings(".errerMsg").text("")
+            $(this).css("border-color","black");
+            _city = val;
+        }
+    })
+
+    $("#phone").focusout(function(){
+        var val = $(this).val();
+        if(val.length < 9 ){    
+            $(this).siblings(".errerMsg").text("Is not a valid phone number. Please enter a 10-digit phone number.");
+            $(this).css("border-color","red");
+            _phone = ""
+        } else{
+            $(this).siblings(".errerMsg").text("")
+            $(this).css("border-color","black");
+            _phone = val;
+        }
+    })
+
+    $("#email").focusout(function(){
+        const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        var val = $(this).val();
+
+        if (!val.toLowerCase().match(emailRegEx)){
+            $(this).siblings(".errerMsg").text("Email is invalid");
+            $(this).css("border-color","red");
+            _email = ""        
+        } else{
+            $(this).siblings(".errerMsg").text("")
+            $(this).css("border-color","black");
+            _email = val;
+        }
+    })
+
+
+
+
+    // Checkout Card 
+
     // Promo Button
     $(".promoInputContainer").hide()
+
     $(".promoBtn").click(function(){
         $(this).hide()
         $(".promoInputContainer").show()
     })
+    
     $(".promoCancel").click(function(){
         $(".promoInputContainer").hide();
         $(".promoBtn").show();
@@ -424,10 +547,12 @@ $(document).ready(function(){
 
     // Gift Card Button
     $(".giftInputContainer").hide()
+
     $(".giftBtn").click(function(){
         $(this).hide()
         $(".giftInputContainer").show()
     })
+
     $(".giftCancel").click(function(){
         $(".giftInputContainer").hide();
         $(".giftBtn").show();
@@ -548,4 +673,5 @@ $(document).ready(function(){
         checkoutBill()
         myMeal()
     })
+
 });
