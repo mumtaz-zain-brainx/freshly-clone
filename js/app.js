@@ -57,6 +57,7 @@ $(document).ready(function(){
         $("#firstDeliveryDate").text(selectedDate)
         $(".cartDate").text(selectedDate)
         $('#menuDateSelector').val(selectedDate).trigger('change');
+        $('#menuDateSelector').val(selectedDate).trigger('change');
 
     })
 
@@ -84,7 +85,8 @@ $(document).ready(function(){
         // Updating date on firstDeliveryDate & cartDate elements
         $("#firstDeliveryDate").text(selectedDate)
         $(".cartDate").text(selectedDate)
-
+        
+        
         // Updating date on Date Section Page
         $(".dateListItem").filter(function(){
             let temp = `${$(this).find("#deliveryDay").text()}${$(this).find("#deliveryDate").text()}`
@@ -93,6 +95,7 @@ $(document).ready(function(){
                 $(this).addClass("dateListItemActive");
             }
         });
+        $('#checkoutDate').val(selectedDate).trigger('change');
     });
 
     
@@ -104,6 +107,7 @@ $(document).ready(function(){
             title:"Steak Peppercorn",
             subTitle: "500 Cal | Gluten Free | Single-Serve",
             cost: 11.79,
+            addCost: "",
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012873/production-meal-image-2fd3df62-8abf-413e-8650-afca039518ec.jpg",
             imgUrlSub: "https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012875/production-meal-without-background-image-3c327134-2073-4b4a-9e97-a81597e5d689.png",
         },
@@ -112,6 +116,7 @@ $(document).ready(function(){
             title:"Homestyle Chicken",
             subTitle: "500 Cal | Gluten Free | Single-Serve",
             cost: 11.79,
+            addCost: "",
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012265/production-meal-image-e4122aa8-0fe7-4854-b6f5-e27e0c5be918.jpg",
             imgUrlSub: "https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012267/production-meal-without-background-image-6cadf26d-addc-4674-bfb3-3255cd770ebd.png",
         },
@@ -120,6 +125,7 @@ $(document).ready(function(){
             title:"Cauliflower Shell Beef Bolognese",
             subTitle: "490 Cal | Gluten Free | Single-Serve",
             cost: 11.79,
+            addCost: "",
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012554/production-meal-image-c9eef45a-97a9-487c-9550-71488e5f639a.jpg",
             imgUrlSub: "https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012556/production-meal-without-background-image-964a7d18-a670-4e0d-8007-b50d22d07b79.png",
         },
@@ -128,6 +134,7 @@ $(document).ready(function(){
             title:"Sausage Baked Penne",
             subTitle: "470 Cal | Gluten Free | Single-Serve",
             cost: 11.79,
+            addCost: "",
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012391/production-meal-image-f0de55be-d691-4ade-bc26-b4a8aedaa1fe.jpg",
             imgUrlSub:"https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012393/production-meal-without-background-image-4e5dd437-69eb-4ae8-847b-7ea52f687633.png",
         },
@@ -136,6 +143,7 @@ $(document).ready(function(){
             title:"Savory-Sweet Chicken Teriyaki Bowl",
             subTitle: "480 Cal | Gluten Free | Single-Serve",
             cost: 11.79,
+            addCost: "",
             imgUrl:"https://res.cloudinary.com/freshly/image/upload/c_scale,w_640/c_crop,h_341,w_512/v1637012614/production-meal-image-92ec0fc1-d352-4720-9b83-96798ab8d2de.jpg",
             imgUrlSub:"https://res.cloudinary.com/freshly/image/upload/c_fill,dpr_2,f_auto,h_90,w_90/v1637012616/production-meal-without-background-image-71dafd36-0f62-46f3-ad7a-16542a12a3f5.png",
         },
@@ -175,13 +183,11 @@ $(document).ready(function(){
     }
 
 
-    // Add Item to cart function
-    $(".menuCardBtn").click(function(){
-        let currId = $(this).attr('id');
-        let currObj = $.grep(menuItems, function(e){ return e.id == currId; });
+    function addTocart(id){
+        let currObj = $.grep(menuItems, function(e){ return e.id == id; });
         currObj = currObj[0]
         cartItems.push(currObj);
-
+    
         let cartItem = 
         `<li class="cartItem" id="${currObj.id}">
             <div class="cartItemContent">
@@ -193,32 +199,37 @@ $(document).ready(function(){
                     </div>
                 </figure>
                 <div class="d-flex flex-column">
-                    <div class="cartItemBtn plusBtn" role="button" tabindex="0">
+                    <div class="cartItemBtn plusBtn" id="plusBtn" role="button" tabindex="0">
                         <div class="btn1"></div>
                     </div>
-                    <div class="cartItemBtn minusBtn" role="button" tabindex="0">
+                    <div class="cartItemBtn minusBtn" id="minusBtn" role="button" tabindex="0">
                         <div class="btn2"></div>
                     </div>
                 </div>
             </div>
         </li>`
-
+    
         $("#cartItems").append(cartItem);
-
-
+    
+        
+    }
+    
+    
+    function updateCartContent(){
+        
         $(".cartIconCounter").text(cartItems.length)// Cart counter Update
-
-
+    
+    
         // Displaying cart content
         if(cartItems.length > 0){
             $(".clearBtn").show(); // Showing clear button 
             $(".ordSum").show(); // Showing order summary
             $(".cartPlaceHolder").hide(); // Hiding cart placeholder 
-
+    
             // Calculating cart total & discount
             cartSubTotal = (cartItems.length * 11.79).toFixed(2);
             cartSubTotalDiscounted = (cartItems.length * 11.79).toFixed(2);
-
+    
             // Displaying cart subtotal
             $(".subtotalIcon").html(
                 `
@@ -234,7 +245,7 @@ $(document).ready(function(){
                 // Checking the current offer 
                 else if(cartItems.length >= 6){
                     $(".discountMsg").find("p").text(`The more you add, the more you'll save!`) // Updating discount offer message
-
+    
                     // Checking offer price
                     if(cartItems.length<8){
                         cartSubTotalDiscounted = (cartItems.length * 9.99).toFixed(2);
@@ -248,7 +259,7 @@ $(document).ready(function(){
                     else if(cartItems.length == 12){
                         cartSubTotalDiscounted = (cartItems.length * 8.99).toFixed(2);
                     }
-
+    
                     // Showing discount in order summary
                     $(".noOfMealsDiscounted").html(
                         `<p>${cartItems.length} meals discount</p>
@@ -256,7 +267,7 @@ $(document).ready(function(){
                     )
                     $(".discountContainer").show(); // Showing offer badge on cart button section
                     $(".discountContainerCost").text(`You saved $${(cartSubTotal-cartSubTotalDiscounted).toFixed(2)}`) // Updating offer badge on cart button section
-
+    
                     // Updating cart subtotal with discount price
                     $(".subtotalIcon").html(
                         `
@@ -270,7 +281,7 @@ $(document).ready(function(){
             // Checking cart limit
             if(cartItems.length >12){
                 $(".noOfMealsDiscounted").empty()
-
+    
                 $(".discountContainer").hide();
                 $(".subtotalIcon").html(
                     `
@@ -284,9 +295,9 @@ $(document).ready(function(){
                 $(".cartBtn").addClass("cartBtnDisabled");
                 $(".discountMsg").find("p").text(``)
                 
-
+    
             }
-
+    
             // Displaying order summary
             $(".noOfMeals").html(
                 `<p>${cartItems.length} meals</p>
@@ -297,8 +308,8 @@ $(document).ready(function(){
                 <p>$${cartSubTotalDiscounted}</p>`
             )
         }
-
-
+    
+    
         // Updating checkout cart button
         if(cartItems.length < 4){
             $(".cartBtn").text(`Add ${4 - cartItems.length} To Continue`)
@@ -310,8 +321,47 @@ $(document).ready(function(){
             $(".cartBtn").text(`Next`)
             $(".cartBtn").attr("href", "#checkout");
         }
+    }
 
+
+    function plusBtnFunc(){
+        let li = $(this).parentsUntil("ul");
+        let id = $(li[2]).attr("id")
+        addTocart(id)
+        updateCartContent()
+    }
+    function minusBtnFunc(){
+        let id = $(this).parentsUntil("ul");
+        id[2].remove()
+        updateCartContent()
+    }
+
+    
+    
+    // Add Item to cart function
+    $(".menuCardBtn").click(function(){
+        let currId = $(this).attr('id');
+        addTocart(currId)
+        updateCartContent()
+
+        document.getElementById("plusBtn").addEventListener("click",plusBtnFunc);
+        document.getElementById("minusBtn").addEventListener("click",minusBtnFunc);
     })
+
+    // Cart item buttons feature 
+    $(".plusBtn").click(function(){
+        let li = $(this).parentsUntil("ul");
+        let id = $(li[2]).attr("id")
+        addTocart(id)
+        updateCartContent()
+    })
+
+    $(".minusBtn").click(function(){
+        let id = $(this).parentsUntil("ul");
+        id[2].remove()
+        updateCartContent()
+    })
+
 
     // Clear cart button features
     
@@ -348,19 +398,154 @@ $(document).ready(function(){
         cartSubTotalDiscounted = 0.0
     })
 
+   
 
-    // Cart item buttons feature 
-    $(".plusBtn").click(function(){
-        let li = $(this).parentsUntil("ul");
-        let temp = $(li[2]).clone();
+    
+    /* ---------------------- Checkout Section ---------------------- */
 
-        $("#cartItems").after(temp)
+    // Promo Button
+    $(".promoInputContainer").hide()
+    $(".promoBtn").click(function(){
+        $(this).hide()
+        $(".promoInputContainer").show()
+    })
+    $(".promoCancel").click(function(){
+        $(".promoInputContainer").hide();
+        $(".promoBtn").show();
     })
 
-    $(".minusBtn").click(function(){
-        let id = $(this).parentsUntil("ul");
-        console.log(id)
-        id[2].remove()
+    $(".promoInput").keyup(function(){
+        if($(".promoInput").val()!="" && $(".promoInput").val()!= " "){
+            $(".promoInputContainer").find(".cardSpecialBtn").removeClass("cardSpecialBtnDisable")
+        }else{
+            $(".promoInputContainer").find(".cardSpecialBtn").addClass("cardSpecialBtnDisable")
+        }
     })
 
+    // Gift Card Button
+    $(".giftInputContainer").hide()
+    $(".giftBtn").click(function(){
+        $(this).hide()
+        $(".giftInputContainer").show()
+    })
+    $(".giftCancel").click(function(){
+        $(".giftInputContainer").hide();
+        $(".giftBtn").show();
+    })
+
+    $(".giftInput").keyup(function(){
+        if($(".giftInput").val()!="" && $(".giftInput").val()!= " "){
+            $(".giftInputContainer").find(".cardSpecialBtn").removeClass("cardSpecialBtnDisable")
+        }else{
+            $(".giftInputContainer").find(".cardSpecialBtn").addClass("cardSpecialBtnDisable")
+        }
+    })
+
+    // Displaying dates on Checkout Card date-selector 
+    for(let i=1; i <= 10; i++){
+        let d = new Date()
+        d.setDate(d.getDate() + i);
+
+        let itemDate = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+        let itemDayDate = `${dayNames[d.getDay()]}, ${monthNames[d.getMonth()]} ${d.getDate()}`
+
+        let selectItem = `<option value="${itemDayDate}">${itemDayDate}</option>`
+
+        $("#checkoutDate").append(selectItem);
+    }
+
+    // Upating date on different elements
+    $("#checkoutDate").change(function(){
+        let optDate = this.value;
+        selectedDate = optDate
+        // Updating date on firstDeliveryDate & cartDate elements
+        $("#firstDeliveryDate").text(selectedDate)
+        $(".cartDate").text(selectedDate)
+        
+        // Updating date on Date Section Page
+        $(".dateListItem").filter(function(){
+            let temp = `${$(this).find("#deliveryDay").text()}${$(this).find("#deliveryDate").text()}`
+            if(temp== selectedDate){
+                $(".dateListItem").filter(".dateListItemActive").removeClass("dateListItemActive");
+                $(this).addClass("dateListItemActive");
+            }
+        });
+        $('#menuDateSelector').val(selectedDate).trigger('change');
+    });
+
+    
+    // Checkout Bill 
+    function checkoutBill(){
+        $(".checkoutCardSubtotal").html(`
+            <div class="float-start">${cartItems.length}<!-- --> meals</div>
+            <div class="float-end fw-semibold">$${cartSubTotal}</div>
+        `)
+        if(cartItems.length >= 6){
+            $(".checkoutBillDiscount").html(`
+            <li class="subinfo px-2 py-2 mt-3 border-0 font-size-small list-group-item">
+                <div>
+                    <div class="float-start"> <!-- -->${cartItems.length}<!-- --> meals discount </div>
+                    <div class="float-end fw-semibold discount">-$${(cartSubTotal-cartSubTotalDiscounted).toFixed(2)}</div>
+                </div>
+            </li>
+            <li class="subinfo px-2 py-2 border-0 font-size-small list-group-item">
+                <div class="fw-semibold">
+                    <div class="float-start font-weight-500">Subtotal</div>
+                    <div class="float-end font-weight-500">$${cartSubTotalDiscounted}</div>
+                </div>
+            </li>
+            `)
+        }else{
+            $(".checkoutBillDiscount").empty()
+        }
+        $(".checkoutCardTotal").html(`
+        <div class="float-start">Total</div>
+        <div class="float-end">$${(parseFloat(cartSubTotalDiscounted)+9.99).toFixed(2)}</div>
+        `)
+
+        $(".formTotal").text(`$${(parseFloat(cartSubTotalDiscounted)+9.99).toFixed(2)}`)
+    }
+    
+    // My Meal 
+    function myMeal(){
+        var meals = {}
+        for(var c of cartItems){
+            if(meals[c.id]){
+                meals[c.id]++;
+            }else{
+                meals[c.id] = 1;
+            }
+        }
+    
+        console.log(meals)
+    
+        $(".mealItems").empty()
+        for (const key in meals) {
+            let currObj = $.grep(menuItems, function(e){ return e.id == key; });
+            currObj = currObj[0]
+            
+            $(".mealItems").append(`
+            <li class="px-0 flex-shrink-0 py-2 list-group-item bg-transparent">
+                <figure class="mealItem d-flex align-items-center mb-0">
+                    <div class="d-flex align-items-center col-3 col-md-3">
+                        <div class="count fw-semibold text-center">x<!-- -->${meals[key]}</div>
+                        <div class="imgWrapper"><img class="w-100" src="${currObj.imgUrlSub}" alt="Chicken Tikka Masala"></div>
+                    </div>
+                    <div class="info px-2 col">
+                        <h5 class="h6 mb-0 ms-2 fw-semibold name">${currObj.title}</h5>
+                    </div>
+                    <div class="d-flex justify-content-end col-3 col-md-2">
+                        <h6 class="additionalPrice">${currObj.addCost}</h6>
+                    </div>
+                </figure>
+            </li>
+            `)
+        }
+    }
+
+    // Updating checkout bill
+    $(".cartBtn").click(function(){
+        checkoutBill()
+        myMeal()
+    })
 });
