@@ -157,6 +157,9 @@ $(document).ready(function(){
     var cartSubTotal = 0.0;
     var cartSubTotalDiscounted = 0.0;
 
+
+    var delcount = 1
+
     // Generating menu items 
     for(var m of menuItems){
         let menuItem = 
@@ -184,33 +187,32 @@ $(document).ready(function(){
 
 
     function addTocart(id){
-        // debugger
         let currObj = $.grep(menuItems, function(e){ return e.id == id; });
         currObj = currObj[0]
         cartItems.push(currObj);
     
-        // let cartItem = 
-        // `<li class="cartItem" id="${currObj.id}">
-        //     <div class="cartItemContent">
-        //         <figure class="d-flex align-items-center w-100 m-0" role="button" tabindex="0">
-        //             <img src="${currObj.imgUrlSub}" class="cartItemImg" alt="Sausage Baked Penne">
-        //             <div class="d-flex flex-column cartItemTitle">
-        //                 <h2>${currObj.title}</h2>
-        //                 <h6></h6>
-        //             </div>
-        //         </figure>
-        //         <div class="d-flex flex-column">
-        //             <div class="cartItemBtn plusBtn" id="plusBtn" role="button" tabindex="0">
-        //                 <div class="btn1"></div>
-        //             </div>
-        //             <div class="cartItemBtn minusBtn" id="minusBtn" role="button" tabindex="0">
-        //                 <div class="btn2"></div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </li>`
+        let cartItem = 
+        `<li class="cartItem" id="${currObj.id+cartItems.length}" data-id="${currObj.id}">
+            <div class="cartItemContent">
+                <figure class="d-flex align-items-center w-100 m-0" role="button" tabindex="0">
+                    <img src="${currObj.imgUrlSub}" class="cartItemImg" alt="Sausage Baked Penne">
+                    <div class="d-flex flex-column cartItemTitle">
+                        <h2>${currObj.title}</h2>
+                        <h6></h6>
+                    </div>
+                </figure>
+                <div class="d-flex flex-column">
+                    <div class="cartItemBtn plusBtn" id="plusBtn" role="button" tabindex="0">
+                        <div class="btn1"></div>
+                    </div>
+                    <div class="cartItemBtn minusBtn" id="minusBtn" role="button" tabindex="0">
+                        <div class="btn2"></div>
+                    </div>
+                </div>
+            </div>
+        </li>`
 
-        let cartItem = `<p data-id="${currObj.id}" class="plusBtn abc${currObj.id}">${currObj.title}</p>`
+        // let cartItem = `<p data-id="${currObj.id}" class="plusBtn abc${currObj.id}">${currObj.title}</p>`
     
         $("#cartItems").append(cartItem);
     
@@ -221,7 +223,7 @@ $(document).ready(function(){
     function updateCartContent(){
         
         $(".cartIconCounter").text(cartItems.length)// Cart counter Update
-    
+        
     
         // Displaying cart content
         if(cartItems.length > 0){
@@ -318,6 +320,8 @@ $(document).ready(function(){
         // Updating checkout cart button
         if(cartItems.length < 4){
             $(".cartBtn").text(`Add ${4 - cartItems.length} To Continue`)
+            $(".cartIconCounter").addClass("cartIconCounterRed");
+            $(".cartBtn").addClass("cartBtnDisabled");
             $(".discountContainer").hide();
         }
         if(cartItems.length >= 4){
@@ -329,46 +333,44 @@ $(document).ready(function(){
     }
 
 
-    function plusBtnFunc(currId){
-        
-    }
-    function minusBtnFunc(id){
-        
-        cartItems = $.grep(cartItems, function(e){ 
-            return e.id != id; 
-        });
-        console.log(cartItems.length)
-        updateCartContent()
-    }
-
     
     
     // Add Item to cart function
-    $(".menuCardBtn").click(function(){
+    $(".menuCardBtn").on("click",function(){
+        
         let currId = $(this).attr('id');
         addTocart(currId)
         updateCartContent()
 
-        // Cart item buttons feature 
-        $(".plusBtn").click(function(){
-            // let li = $(this).parentsUntil("ul");
-            // let id = $(li[2]).attr("id")
-            debugger
-            let id = $(this).attr("data-id")
-            // plusBtnFunc(id)
+                
+        // Cart item buttons calls
+        addBtns()
+        deleteBtns()
+    })
+    
+    // Cart item buttons feature 
+    function addBtns(){
+        $(".plusBtn").on("click",function(){
+            let li = $(this).parentsUntil("ul");
+            let id = $(li[2]).attr("data-id")
             addTocart(id)
             updateCartContent()
         })
-    
-        $(".minusBtn").click(function(){
-            let li = $(this).parentsUntil("ul");
-            li[2].remove()
-            let id = $(li[2]).attr("id")
-            minusBtnFunc(id)
+    }
+
+    function deleteBtns(){
+        $(".minusBtn").on("click",function(){
+            let id = $(this).parents("li").attr("data-id");
+            $(this).parents("li").remove();
+            for(var i = 0; i < cartItems.length; i++) {
+                if(cartItems[i].id == id) {
+                    cartItems.splice(i, 1);
+                    break;
+                }
+            }
+            updateCartContent()
         })
-    })
-
-
+    }
 
     // Clear cart button features
     
@@ -686,6 +688,8 @@ $(document).ready(function(){
     })
 
 
+
+    // jQuery Steps 
     $("#example-basic").steps({
         headerTag: "h3",
         bodyTag: "section",
