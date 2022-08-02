@@ -27,8 +27,8 @@
 .wizard ul > li,
 .tabcontrol ul > li
 {
-    display: block;
-    padding: 0;
+    /* display: block; */
+    /* padding: 0; */
 }
 
 /* Accessibility */
@@ -55,7 +55,7 @@
 .wizard > .steps
 {
     position: relative;
-    display: block;
+    display: none;
     width: 100%;
 }
 
@@ -139,7 +139,7 @@
 
 .wizard > .content
 {
-    background: #eee;
+    background: #fffdf7;
     display: block;
     min-height: 100vh;
     width: auto;
@@ -162,12 +162,12 @@
 
 .wizard > .content > .body ul
 {
-    list-style: disc !important;
+    /* list-style: disc !important; */
 }
 
 .wizard > .content > .body ul > li
 {
-    display: list-item;
+    /* display: list-item; */
 }
 
 .wizard > .content > .body > iframe
