@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // Bootstrap Tool-Tips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
@@ -8,6 +9,16 @@ $(document).ready(function(){
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
 
     var selectedDate = "";
+
+
+ 
+    /* ----------------- jQuery Steps -----------------*/
+    // $("#example-basic").steps({
+    //     headerTag: "h3",
+    //     bodyTag: "section",
+    //     transitionEffect: "slideLeft",
+    //     autoFocus: true
+    // });
 
 
     /* ----------------- Date Section -----------------*/
@@ -158,8 +169,6 @@ $(document).ready(function(){
     var cartSubTotalDiscounted = 0.0;
 
 
-    var delcount = 1
-
     // Generating menu items 
     for(var m of menuItems){
         let menuItem = 
@@ -284,7 +293,7 @@ $(document).ready(function(){
                 }
             }
             // Checking cart limit
-            if(cartItems.length >12){
+            if(cartItems.length > 12){
                 $(".noOfMealsDiscounted").empty()
     
                 $(".discountContainer").hide();
@@ -294,10 +303,10 @@ $(document).ready(function(){
                     <p class="m-0 me-1" style="color:#357471;">$${cartSubTotalDiscounted}</p>
                     `
                 )
-                $(".cartIconCounter").addClass("cartIconCounterRed");
                 $(".cartIconCounter").css("color","red")
                 $(".cartBtn").text(`Remove ${cartItems.length-12} To Continue`)
                 $(".cartBtn").addClass("cartBtnDisabled");
+                $(".cartBtn").attr("href", "#!");
                 $(".discountMsg").find("p").text(``)
                 
     
@@ -320,20 +329,24 @@ $(document).ready(function(){
         // Updating checkout cart button
         if(cartItems.length < 4){
             $(".cartBtn").text(`Add ${4 - cartItems.length} To Continue`)
-            $(".cartIconCounter").addClass("cartIconCounterRed");
+            $(".cartIconCounter").css("color","red");
             $(".cartBtn").addClass("cartBtnDisabled");
             $(".discountContainer").hide();
         }
         if(cartItems.length >= 4){
-            $(".cartIconCounter").removeClass("cartIconCounterRed");
-            $(".cartBtn").removeClass("cartBtnDisabled");
-            $(".cartBtn").text(`Next`)
-            $(".cartBtn").attr("href", "#checkout");
+            if(cartItems.length < 6){
+                $(".discountContainer").hide();
+            }
+            if(cartItems.length <=12){
+                $(".cartIconCounter").css("color","black");
+                $(".cartBtn").removeClass("cartBtnDisabled");
+                $(".cartBtn").text(`Next`)
+                $(".cartBtn").attr("href", "#checkout");
+            }
         }
     }
 
 
-    
     
     // Add Item to cart function
     $(".menuCardBtn").on("click",function(){
@@ -344,9 +357,10 @@ $(document).ready(function(){
 
                 
         // Cart item buttons calls
-        addBtns()
-        deleteBtns()
+        addItems()
+        deleteItem()
     })
+    
     
     // Cart item buttons feature 
     function addBtns(){
@@ -370,6 +384,50 @@ $(document).ready(function(){
             }
             updateCartContent()
         })
+    }
+
+
+    
+    // Add Cart Items
+    const plusBtns = document.getElementsByClassName("plusBtn");
+
+    addItems()
+
+    function addItems(){
+        for (let i = 0; i < plusBtns.length; i++) {
+            plusBtns[i].onclick = function(){
+                var id = this.parentElement.parentElement.parentElement.getAttribute("data-id");
+                addTocart(id)
+                updateCartContent()
+
+                addItems()
+                deleteItem()
+            }
+        }
+    }
+
+
+    // Delete Cart Items
+    const delBtns = document.getElementsByClassName("minusBtn");
+
+    deleteItem();
+
+    function deleteItem(){
+
+        for (let i = 0; i < delBtns.length; i++) {
+            delBtns[i].onclick = function() {
+                var listItem = this.parentElement.parentElement.parentElement;
+                listItem.style.display = "none";
+                let id = $(this).parents("li").attr("data-id");
+                for(var i = 0; i < cartItems.length; i++) {
+                    if(cartItems[i].id == id) {
+                        cartItems.splice(i, 1);
+                        break;
+                    }
+                }
+                updateCartContent()
+            }
+        }
     }
 
     // Clear cart button features
@@ -687,13 +745,4 @@ $(document).ready(function(){
         myMeal()
     })
 
-
-
-    // jQuery Steps 
-    $("#example-basic").steps({
-        headerTag: "h3",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        autoFocus: true
-    });
 });
