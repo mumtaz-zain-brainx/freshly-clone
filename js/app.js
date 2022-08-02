@@ -150,7 +150,7 @@ $(document).ready(function(){
     ]
 
     // Cart Items
-    const cartItems = []
+    var cartItems = []
 
 
     // Cart variables
@@ -184,30 +184,33 @@ $(document).ready(function(){
 
 
     function addTocart(id){
+        // debugger
         let currObj = $.grep(menuItems, function(e){ return e.id == id; });
         currObj = currObj[0]
         cartItems.push(currObj);
     
-        let cartItem = 
-        `<li class="cartItem" id="${currObj.id}">
-            <div class="cartItemContent">
-                <figure class="d-flex align-items-center w-100 m-0" role="button" tabindex="0">
-                    <img src="${currObj.imgUrlSub}" class="cartItemImg" alt="Sausage Baked Penne">
-                    <div class="d-flex flex-column cartItemTitle">
-                        <h2>${currObj.title}</h2>
-                        <h6></h6>
-                    </div>
-                </figure>
-                <div class="d-flex flex-column">
-                    <div class="cartItemBtn plusBtn" id="plusBtn" role="button" tabindex="0">
-                        <div class="btn1"></div>
-                    </div>
-                    <div class="cartItemBtn minusBtn" id="minusBtn" role="button" tabindex="0">
-                        <div class="btn2"></div>
-                    </div>
-                </div>
-            </div>
-        </li>`
+        // let cartItem = 
+        // `<li class="cartItem" id="${currObj.id}">
+        //     <div class="cartItemContent">
+        //         <figure class="d-flex align-items-center w-100 m-0" role="button" tabindex="0">
+        //             <img src="${currObj.imgUrlSub}" class="cartItemImg" alt="Sausage Baked Penne">
+        //             <div class="d-flex flex-column cartItemTitle">
+        //                 <h2>${currObj.title}</h2>
+        //                 <h6></h6>
+        //             </div>
+        //         </figure>
+        //         <div class="d-flex flex-column">
+        //             <div class="cartItemBtn plusBtn" id="plusBtn" role="button" tabindex="0">
+        //                 <div class="btn1"></div>
+        //             </div>
+        //             <div class="cartItemBtn minusBtn" id="minusBtn" role="button" tabindex="0">
+        //                 <div class="btn2"></div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </li>`
+
+        let cartItem = `<p data-id="${currObj.id}" class="plusBtn abc${currObj.id}">${currObj.title}</p>`
     
         $("#cartItems").append(cartItem);
     
@@ -290,7 +293,7 @@ $(document).ready(function(){
                     `
                 )
                 $(".cartIconCounter").addClass("cartIconCounterRed");
-                alert($(".cartIconCounter").css("color"));
+                $(".cartIconCounter").css("color","red")
                 $(".cartBtn").text(`Remove ${cartItems.length-12} To Continue`)
                 $(".cartBtn").addClass("cartBtnDisabled");
                 $(".discountMsg").find("p").text(``)
@@ -308,7 +311,9 @@ $(document).ready(function(){
                 <p>$${cartSubTotalDiscounted}</p>`
             )
         }
-    
+        else if(cartItems.length == 0){
+            clearCart()
+        }
     
         // Updating checkout cart button
         if(cartItems.length < 4){
@@ -324,15 +329,15 @@ $(document).ready(function(){
     }
 
 
-    function plusBtnFunc(){
-        let li = $(this).parentsUntil("ul");
-        let id = $(li[2]).attr("id")
-        addTocart(id)
-        updateCartContent()
+    function plusBtnFunc(currId){
+        
     }
-    function minusBtnFunc(){
-        let id = $(this).parentsUntil("ul");
-        id[2].remove()
+    function minusBtnFunc(id){
+        
+        cartItems = $.grep(cartItems, function(e){ 
+            return e.id != id; 
+        });
+        console.log(cartItems.length)
         updateCartContent()
     }
 
@@ -344,40 +349,42 @@ $(document).ready(function(){
         addTocart(currId)
         updateCartContent()
 
-        document.getElementById("plusBtn").addEventListener("click",plusBtnFunc);
-        document.getElementById("minusBtn").addEventListener("click",minusBtnFunc);
+        // Cart item buttons feature 
+        $(".plusBtn").click(function(){
+            // let li = $(this).parentsUntil("ul");
+            // let id = $(li[2]).attr("id")
+            debugger
+            let id = $(this).attr("data-id")
+            // plusBtnFunc(id)
+            addTocart(id)
+            updateCartContent()
+        })
+    
+        $(".minusBtn").click(function(){
+            let li = $(this).parentsUntil("ul");
+            li[2].remove()
+            let id = $(li[2]).attr("id")
+            minusBtnFunc(id)
+        })
     })
 
-    // Cart item buttons feature 
-    $(".plusBtn").click(function(){
-        let li = $(this).parentsUntil("ul");
-        let id = $(li[2]).attr("id")
-        addTocart(id)
-        updateCartContent()
-    })
-
-    $(".minusBtn").click(function(){
-        let id = $(this).parentsUntil("ul");
-        id[2].remove()
-        updateCartContent()
-    })
 
 
     // Clear cart button features
     
-    $(".clearBtn").click(function(){
+    function clearCart(){
 
         $("#cartItems").empty(); // Removing cart elements
         $(".clearBtn").hide(); // Hiding clear cart button
         $(".ordSum").hide(); // Hiding cart summary
         $(".cartPlaceHolder").show() // Displaying cart placeholder
-
+    
         // Changing cart button accourding to empty cart
         $(".cartBtn").text(`Add 4 To Continue`)
         $(".cartBtn").addClass("cartBtnDisabled");
         $(".cartBtn").attr("href", "#!");
         $(".discountMsg").find("p").text(``) // Hiding Discount Message
-
+    
         // Emptying cart
         while(cartItems.length > 0){
             cartItems.pop()
@@ -386,16 +393,20 @@ $(document).ready(function(){
         $(".discountContainer").hide();
         $(".cartIconCounter").text(cartItems.length) 
         $(".cartIconCounter").addClass("cartIconCounterRed");
-
+    
         // Hiding order summary and cart subtotal
         $(".noOfMeals").empty()
         $(".noOfMealsDiscounted").empty()
         $(".summarySubtotal").empty()
         $(".subtotalIcon").text(``)
-
+    
         // Reseting cart total & discount
         cartSubTotal = 0.0
         cartSubTotalDiscounted = 0.0
+    }
+
+    $(".clearBtn").click(function(){
+        clearCart()
     })
 
    
