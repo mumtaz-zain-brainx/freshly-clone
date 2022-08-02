@@ -311,7 +311,7 @@
 
         <h3></h3>
         <!-- Date Section -->
-        <section id="date">
+        <section id="date" class="dateMain">
             <div class="dateContainer container-fluid">
                 <!-- Date Section Title  -->
                 <div class="row">
@@ -557,6 +557,7 @@
                 <div class="menuCart">
                     <section class=" menuCartInner">
                         <div class="d-flex flex-column position-relative h-100 menuCartInnerContainer">
+                            <!-- Cart  -->
                             <div class="cartContent d-none d-md-flex flex-grow-1 justify-content-center position-relative overflow-hidden">
                                 <div class="cartContentInner d-flex flex-grow-1 flex-column align-items-center">
                                     <div class="bg-light w-100 h-100">
@@ -565,7 +566,7 @@
                                             <div class="position-sticky top-0" style="z-index: 5;">
                                                 <div class="cartContentHeader">
                                                     <div class="cartContentHeaderInner">
-                                                        <span class="MealsHeader-module__text___3mlyz">My delivery for: <b class="cartDate">Monday, Aug 8</b></span>
+                                                        <span class="">My delivery for: <b class="cartDate">Monday, Aug 8</b></span>
                                                     </div>
                                                     <div class="cartContentHeaderBtn">
                                                         <div class="clearBtn" role="button" tabindex="0" data-test-type="cart__clear-all">Clear all</div>
@@ -598,7 +599,7 @@
                                                 </div>
                                                 <!-- Cart Placeholder  -->
                                                 <div class="cartPlaceHolder">
-                                                    <div class="EmptyCart-module__emptyContainer___1QFUr EmptyCart-module__flexiblePlans___528pA d-flex flex-column justify-content-center align-items-center w-100 mb-5 text-center h-auto">
+                                                    <div class="d-flex flex-column justify-content-center align-items-center w-100 mb-5 text-center h-auto">
                                                         <div>Get started by adding at least 4 meals</div>
                                                     </div>
                                                 </div>
@@ -607,7 +608,63 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- Mobile Cart  -->
+                            <div class="mobileCartContainer">
+                                <div class="mobileCartContainerBackDrop"></div>
+                                <div class="mobileCartContainerInner">
+                                    <button class="cartToggleBtn" data-test-type="cart__is-open-chevron">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="#2a6dff" viewBox="0 0 11 10" width="16px" height="16px"><path d="M5.25 8.25l-5-5 1.5-1.5 3.5 3.75 3.5-3.75 1.5 1.5z"></path></svg>
+                                    </button>
+                                    <div class="mobileCart bg-light">
+                                        <div class="mobileCartContent">
+                                            <!-- Mobile Cart Nav  -->
+                                            <div class="position-sticky top-0" style="z-index: 5;">
+                                                <div class="cartContentHeader">
+                                                    <div class="cartContentHeaderInner">
+                                                        <span class="">My delivery for: <b class="cartDate">Monday, Aug 8</b></span>
+                                                    </div>
+                                                    <div class="cartContentHeaderBtn">
+                                                        <div class="clearBtn" role="button" tabindex="0" data-test-type="cart__clear-all">Clear all</div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <!-- Cart Content  -->
+                                            <div class="cartContent">
+                                                <div class="pb-2 mobileCartItemsListContainer">
+                                                    <!-- Cart Items  -->
+                                                    <ul class="mobileCartItemsList" id="mobileCartItems">
+                                                    </ul>
+                                                    <!-- Cart order summary  -->
+                                                    <div class=" pt-2 px-3 pb-0 ordSum">
+                                                        <div class="d-flex justify-content-between">
+                                                            <p class="text-dark fw-semibold">Order Summary</p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between noOfMeals">
+                                                        </div>
+                                                        <div class="d-flex justify-content-between noOfMealsDiscounted">
+                                                        </div>
+                                                        <div class="d-flex justify-content-between fw-bold summarySubtotal">
+                                                        </div>
+                                                        <div class="d-flex justify-content-center text-dark" style="font-size: 12px;">
+                                                            Tax and shipping added at checkout
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="cartPlaceHolder">
+                                                    <div class="d-flex flex-column justify-content-center align-items-center w-100 mb-5 text-center h-auto">
+                                                        <div>Get started by adding at least 4 meals</div>
+                                                        <button class="mobileCartBtn mt-4">Get Started</button>
+                                                    </div>
+                                                    <!-- <div>Get started by adding at least 4 meals</div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div><div class="Toastr-module__container___2o2Fg"></div></div>
                             

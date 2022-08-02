@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     // Global Variable 
     const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-    const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     var selectedDate = "";
 
@@ -224,8 +224,7 @@ $(document).ready(function(){
         // let cartItem = `<p data-id="${currObj.id}" class="plusBtn abc${currObj.id}">${currObj.title}</p>`
     
         $("#cartItems").append(cartItem);
-    
-        
+        $("#mobileCartItems").append(cartItem);
     }
     
     
@@ -237,6 +236,7 @@ $(document).ready(function(){
         // Displaying cart content
         if(cartItems.length > 0){
             $(".clearBtn").show(); // Showing clear button 
+            $(".mobileCartItemsListContainer").css("width","100%"); // Showing mobileCartItemsListContainer
             $(".ordSum").show(); // Showing order summary
             $(".cartPlaceHolder").hide(); // Hiding cart placeholder 
     
@@ -255,16 +255,17 @@ $(document).ready(function(){
             if(cartItems.length >= 4){
                 if(cartItems.length < 6){
                     $(".discountMsg").find("p").text(`Add ${6 - cartItems.length} more meals to save $10.80!`) // Updating discount offer message
+                    $(".discountContainer").hide();
                 }
                 // Checking the current offer 
                 else if(cartItems.length >= 6){
                     $(".discountMsg").find("p").text(`The more you add, the more you'll save!`) // Updating discount offer message
     
                     // Checking offer price
-                    if(cartItems.length<8){
+                    if(cartItems.length < 8){
                         cartSubTotalDiscounted = (cartItems.length * 9.99).toFixed(2);
                     }
-                    else if(cartItems.length<10){
+                    else if(cartItems.length < 10){
                         cartSubTotalDiscounted = (cartItems.length * 9.49).toFixed(2);
                     }
                     else if(cartItems.length < 12){
@@ -333,16 +334,12 @@ $(document).ready(function(){
             $(".cartBtn").addClass("cartBtnDisabled");
             $(".discountContainer").hide();
         }
-        if(cartItems.length >= 4){
-            if(cartItems.length < 6){
-                $(".discountContainer").hide();
-            }
-            if(cartItems.length <=12){
-                $(".cartIconCounter").css("color","black");
-                $(".cartBtn").removeClass("cartBtnDisabled");
-                $(".cartBtn").text(`Next`)
-                $(".cartBtn").attr("href", "#checkout");
-            }
+
+        if(cartItems.length >= 4 && cartItems.length <=12){
+            $(".cartIconCounter").css("color","black");
+            $(".cartBtn").removeClass("cartBtnDisabled");
+            $(".cartBtn").text(`Next`)
+            $(".cartBtn").attr("href", "#checkout");
         }
     }
 
@@ -435,6 +432,8 @@ $(document).ready(function(){
     function clearCart(){
 
         $("#cartItems").empty(); // Removing cart elements
+        $("#mobileCartItems").empty(); // Removing Mobile cart elements
+        $(".mobileCartItemsListContainer").css("width","auto"); // Hiding clear cart button
         $(".clearBtn").hide(); // Hiding clear cart button
         $(".ordSum").hide(); // Hiding cart summary
         $(".cartPlaceHolder").show() // Displaying cart placeholder
@@ -452,7 +451,7 @@ $(document).ready(function(){
         // Cart counter and subtotal Update
         $(".discountContainer").hide();
         $(".cartIconCounter").text(cartItems.length) 
-        $(".cartIconCounter").addClass("cartIconCounterRed");
+        $(".cartIconCounter").css("color","red");
     
         // Hiding order summary and cart subtotal
         $(".noOfMeals").empty()
@@ -471,6 +470,23 @@ $(document).ready(function(){
 
    
 
+    $(".mobileCartContainer").hide()
+    
+    // Mobile Cart
+    $(".cartBtnContainer").click(function(){
+
+        $(".mobileCartContainer").toggle()
+    })
+    $(".cartToggleBtn").click(function(){
+
+        $(".mobileCartContainer").hide()
+    })
+    $(".mobileCartBtn").click(function(){
+
+        $(".mobileCartContainer").hide()
+    })
+
+    
     
     /* ---------------------- Checkout Section ---------------------- */
 

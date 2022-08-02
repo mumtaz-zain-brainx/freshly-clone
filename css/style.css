@@ -386,7 +386,7 @@ img{
 
 /* -------------------------------- Date Section Starts --------------------------------  */
 
-#date{
+#date,.dateMain{
     background: var(--light-yellow);
 }
 .dateContainer{
@@ -459,7 +459,7 @@ img{
 
 /* -------------------------------- Menu Section --------------------------------  */
 
-#menu{
+#menu, .menuMain{
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -849,7 +849,7 @@ img{
 
 
 /* -------------------------------- Checkout Section --------------------------------  */
-#checkout{
+#checkout , .checkoutMain{
     background: var(--light-yellow);
 }
 
@@ -943,6 +943,10 @@ img{
     .planHeaderCard {
         font-size: 22px;
     }
+
+    .mobileCartContainer{
+        display: none;
+    }
 }
 
 @media screen and (max-width:991px) {
@@ -1009,14 +1013,11 @@ img{
     
 
     /* Menu styles  */
-
-
     .menuContainer{
         overflow: initial;
         height: 100%;
         padding-top: 0;
     }
-
     .colMenu{
         flex: none;
     }
@@ -1043,7 +1044,6 @@ img{
         flex: 0 1 100%;
         justify-content: space-between;
     }
-
     .menuCart{
         min-width: 200px;
         border: none;
@@ -1062,6 +1062,127 @@ img{
 
     .menuCartInnerContainer{
         max-height: calc(var(--vh, 1vh)*84 + 24px);
+    }
+
+    /* Menu Cart Mobile  */
+    .mobileCartContainer{
+        min-height: calc(68vh - 24px);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+        margin-bottom: -24px;
+        position: relative;
+        bottom: -600px;
+        animation: slideup 0.4s forwards;
+        animation-delay: 0.2s;
+    }
+    @keyframes slideup {
+        0% { bottom: -600px; }
+        100% { bottom: 0; }
+    }
+
+    .mobileCartContainerBackDrop{
+        height: 100vh;
+        width: 100%;
+        z-index: 3;
+        top: 0;
+        position: fixed;
+        background-color: rgba(0,0,0,.3);
+        display: flex;
+    }
+    .mobileCartContainerInner{
+        opacity: 1;
+        transform: translateY(0%);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 4;
+        width: 344px;
+    }
+    .cartToggleBtn{
+        width: 100%;
+        background-color: #fff;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        border: none;
+        z-index: 4;
+    }
+    .mobileCart{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        width: 100%;
+        height: calc(100% - 26px);
+        overflow-y: auto;
+    }
+    .mobileCartContent{
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+    }
+    .mobileCartContent .cartContent{
+        display: flex;
+        flex-grow: 1;
+        position: relative;
+    }
+    .mobileCartItemsList{
+        width: 100%;
+        padding: 4px 0 0;
+        margin: 0 0 7px;
+        list-style: none;
+    }
+    .mobileCartItemsList .cartItemContent{
+        border: none;
+        box-shadow: none;
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        margin: 0.5rem 1rem;
+        width: calc(100% - 2rem);
+        position: relative;
+    }
+    .cartPlaceHolderr{
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: .875rem;
+        font-weight: 400;
+        line-height: normal;
+        color: #303030;
+        text-align: center;
+        padding-bottom: 2.5rem;
+    }
+    .mobileCartBtn{
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: normal;
+        color: #fff;
+        appearance: none;
+        background-color: #2a6dff;
+        text-decoration: none;
+        cursor: pointer;
+        outline: none;
+        height: 44px;
+        padding: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        width: 100%;
+        transition: background-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        border-radius: 0;
+        height: 40px;
+    }
+    .mobileCartBtn:hover{
+        color: #fff;
+        background-color: var(--primary-blue);
     }
 }
 
