@@ -13,12 +13,12 @@ $(document).ready(function(){
 
  
     /* ----------------- jQuery Steps -----------------*/
-    // $("#example-basic").steps({
-    //     headerTag: "h3",
-    //     bodyTag: "section",
-    //     transitionEffect: "slideLeft",
-    //     autoFocus: true
-    // });
+    $("#example-basic").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true
+    });
 
 
     /* ----------------- Date Section -----------------*/
@@ -220,8 +220,6 @@ $(document).ready(function(){
                 </div>
             </div>
         </li>`
-
-        // let cartItem = `<p data-id="${currObj.id}" class="plusBtn abc${currObj.id}">${currObj.title}</p>`
     
         $("#cartItems").append(cartItem);
         $("#mobileCartItems").append(cartItem);
@@ -470,21 +468,29 @@ $(document).ready(function(){
 
    
 
-    $(".mobileCartContainer").hide()
     
     // Mobile Cart
-    $(".cartBtnContainer").click(function(){
+    if (window.innerWidth < 767) {
 
-        $(".mobileCartContainer").toggle()
-    })
-    $(".cartToggleBtn").click(function(){
-
+        
         $(".mobileCartContainer").hide()
-    })
-    $(".mobileCartBtn").click(function(){
 
-        $(".mobileCartContainer").hide()
-    })
+        $(".cartBtnContainer").click(function(){
+            if(window.innerWidth < 767){
+                $(".mobileCartContainer").toggle()
+            }
+            
+        })
+        $(".cartToggleBtn").click(function(){
+    
+            $(".mobileCartContainer").hide()
+        })
+        $(".mobileCartBtn").click(function(){
+    
+            $(".mobileCartContainer").hide()
+        })
+    }
+     
 
     
     

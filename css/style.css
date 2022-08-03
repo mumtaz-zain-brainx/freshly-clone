@@ -845,6 +845,10 @@ img{
     flex-grow: 1;
     position: relative;
 }
+
+.mobileCartContainer{
+    display: none;
+}
 /* -------------------------------- Menu Section End --------------------------------  */
 
 
@@ -932,21 +936,19 @@ img{
 
 /* -------------------------------- jQuery Steps --------------------------------  */
 
-/* TODO: Add jQuery Steps Styles  */
+
 
 /* -------------------------------- jQuery Steps End--------------------------------  */
 
 
 
 /* -------------------------------- Responsive Queries --------------------------------  */
+
 @media screen and (max-width:1024px) {
     .planHeaderCard {
         font-size: 22px;
     }
 
-    .mobileCartContainer{
-        display: none;
-    }
 }
 
 @media screen and (max-width:991px) {
