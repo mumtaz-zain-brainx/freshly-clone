@@ -17,6 +17,7 @@
 }
 
 body{
+    background: var(--light-yellow);
     color: var(--default-text);
     font-size: .875rem;
     line-height: 1.43em;
@@ -860,6 +861,7 @@ img{
 .formInputBorder{
     border-color: black;
 }
+
 
 
 .cardSpecialBtn{
