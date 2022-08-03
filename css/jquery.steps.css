@@ -55,7 +55,8 @@
 .wizard > .steps
 {
     position: relative;
-    display: none;
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -68,12 +69,12 @@
 
 .wizard > .steps .number
 {
-    font-size: 1.429em;
+    font-size: 14px;
 }
 
 .wizard > .steps > ul > li
 {
-    width: 25%;
+    width: auto;
 }
 
 .wizard > .steps > ul > li,
@@ -94,39 +95,59 @@
 {
     display: block;
     width: auto;
-    margin: 0 0.5em 0.5em;
-    padding: 1em 1em;
+    /* margin: 0 0.5em 0.5em; */
+    padding: 14px 10px;
     text-decoration: none;
+    font-weight: 500;
 
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
+.wizard > .steps a > span
+{
+    text-decoration: none;
+}
+
 .wizard > .steps .disabled a,
 .wizard > .steps .disabled a:hover,
 .wizard > .steps .disabled a:active
 {
-    background: #eee;
+    background:transparent;
+    text-decoration: none;
     color: #aaa;
     cursor: default;
+}
+.wizard > .steps .disabled a
+{
+    text-decoration: none;
 }
 
 .wizard > .steps .current a,
 .wizard > .steps .current a:hover,
 .wizard > .steps .current a:active
 {
-    background: #357471;
-    color: #fff;
+    background: transparent;
+    color: black;
     cursor: default;
+    text-decoration: none;
+}
+.wizard > .steps .current a > span
+{
+    text-decoration: none;
 }
 
 .wizard > .steps .done a,
 .wizard > .steps .done a:hover,
 .wizard > .steps .done a:active
 {
-    background: #5eaeaa;
-    color: #fff;
+    background: transparent;
+    color: #2a6dff;
+}
+.wizard > .steps .done a > span
+{
+    text-decoration: none;
 }
 
 .wizard > .steps .error a,
@@ -282,6 +303,7 @@
     position: relative;
     display: block;
     width: 100%;
+    text-align: center;
 }
 
 .tabcontrol > .steps > ul

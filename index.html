@@ -22,8 +22,8 @@
     <title>Freshly</title>
 </head>
 <body>
-    <div id="example-basic">
-        <h3></h3>
+    <div id="example-basic" class="breadcrumb">
+        <h3>Plans <span class="ms-3 text-dark">></span></h3>
         <!-- Plans Section  -->
         <section id="plans">
             <!-- Header  -->
@@ -68,7 +68,7 @@
                     <div class="text-center d-flex flex-column d-md-block">
                         <div class="ctaTitle">Shipping and tax added at checkout</div>
                         <div class="primary-button full-in-mobile">
-                            <a href="#date" id="flexible-plan-cta" rel="keep-params-flex" href="#" class="ctaBtn">Get Started</a>
+                            <a href="#next" id="flexible-plan-cta" role="menuitem" rel="keep-params-flex" class="ctaBtn">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -309,7 +309,8 @@
             </div>
         </section>
 
-        <h3></h3>
+        <!-- <h3>Day</h3> -->
+        <h3>Day <span class="ms-3 text-dark">></span></h3>
         <!-- Date Section -->
         <section id="date" class="dateMain">
             <div class="dateContainer container-fluid">
@@ -340,7 +341,7 @@
                                 <!-- Date Button Section -->
                                 <div class="mx-2 d-flex flex-column align-items-center">
                                     <!-- Date Button -->
-                                    <a href="#menu" data-test="submit-date" class="mb-2 primary-button w-100 fw-semibold dateBtn">Next</a>
+                                    <a href="#next" data-test="submit-date" class="mb-2 primary-button w-100 fw-semibold dateBtn">Next</a>
                                     <!-- First Delivery Date -->
                                     <p class="small text-center mt-4 fw-semibold" >
                                         <span>First Delivery Date: </span>
@@ -447,7 +448,8 @@
             </div>
         </section>
         
-        <h3></h3>
+        <!-- <h3>Meals</h3> -->
+        <h3>Meals <span class="ms-3  text-dark">></span></h3>
         <!-- Menu Section -->
         <section id="menu" class="menuMain">
             <div class="d-flex flex-column flex-md-row w-100 position-relative overflow-hidden menuContainer " >
@@ -708,7 +710,7 @@
         </section>
         
 
-        <h3></h3>
+        <h3>Checkout</h3>
         <!-- Checkout Section -->
         <section id="checkout" class="checkoutMain">
             <div class="container-fluid">
@@ -722,7 +724,7 @@
                                     <div class="col-12 col-md-7 order-1 order-md-0 px-0 px-md-2">
                                         <div class="formWrapper border-bottom">
                                             <h4 class="mb-0 d-none d-md-block pt-2 mb-4">Checkout</h4>
-                                            <form>
+                                            <form action="#!">
                                                 <!-- Top Container  -->
                                                 <div class="border-sm-0 rounded-0 border-bottom-0 card">
                                                     <!-- Title  -->
@@ -899,7 +901,7 @@
                                                                             <span>Total</span>
                                                                             <span class="formTotal">$0.00</span>
                                                                         </div>
-                                                                        <button type="submit" class="same-height-as-paypal-button btn btn-primary btn-lg btn-block rounded-0">Next</button>
+                                                                        <button class="btn btn-primary btn-lg btn-block rounded-0 formSubmitBtn">Next</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -532,6 +532,7 @@ $(document).ready(function(){
             $(this).css("border-color","black");
             _lastName = val;
         }
+        _fullName = `${_firstName} ${_lastName}`;
     })
 
     $("#fullName").focusout(function(){

@@ -997,7 +997,7 @@ function render(wizard, options, state)
         orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
         verticalCssClass = (orientation === stepsOrientation.vertical) ? " vertical" : "",
         contentWrapper = $(wrapperTemplate.format(options.contentContainerTag, "content " + options.clearFixCssClass, wizard.html())),
-        stepsWrapper = $(wrapperTemplate.format(options.stepsContainerTag, "steps " + options.clearFixCssClass, "<ul role=\"tablist\"></ul>")),
+        stepsWrapper = $(wrapperTemplate.format(options.stepsContainerTag, "steps " + options.clearFixCssClass, "<ul role=\"tablist\" class=\"breadcrumb\"></ul>")),
         stepTitles = contentWrapper.children(options.headerTag),
         stepContents = contentWrapper.children(options.bodyTag);
 
@@ -1709,7 +1709,7 @@ var defaults = $.fn.steps.defaults = {
      * @default "<span class=\"number\">#index#.</span> #title#"
      * @for defaults
      **/
-    titleTemplate: "<span class=\"number\">#index#.</span> #title#",
+    titleTemplate: "<span class=\"number\"></span> #title#",
 
     /**
      * The loading template which will be used to create the loading animation.
