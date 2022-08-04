@@ -470,10 +470,8 @@ $(document).ready(function(){
 
     
     // Mobile Cart
+    $(".mobileCartContainer").hide()
     if (window.innerWidth < 767) {
-
-        
-        $(".mobileCartContainer").hide()
 
         $(".cartBtnContainer").click(function(){
             if(window.innerWidth < 767){
@@ -776,8 +774,8 @@ $(document).ready(function(){
     })
 
 
-    // ---------------- 
-    $(".ctaBtn").click(function(){
+    // ---------------- jQuery steps buttons ----------------
+    $(".myNxtBtn").click(function(){
         $(".actions a")[1].click()
     })
     $(".dateBtn").click(function(){
