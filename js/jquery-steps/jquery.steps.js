@@ -782,7 +782,7 @@ function paginationClickHandler(event)
     event.preventDefault();
 
     var anchor = $(this),
-        wizard = anchor.parent().parent().parent().parent().parent(),
+        wizard = anchor.parent().parent().parent().parent(),
         options = getOptions(wizard),
         state = getState(wizard),
         href = anchor.attr("href");
@@ -1055,7 +1055,7 @@ function renderPagination(wizard, options, state)
     if (options.enablePagination)
     {
         var pagination = "<{0} class=\"actions {1}\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
-            buttonTemplate = "<li><a href=\"#{0}\" role=\"menuitem\">{1}</a></li>",
+            buttonTemplate = "<li><a href=\"#{0}\" role=\"menuitem\" class=\"nxtBtn\">{1}</a></li>",
             buttons = "";
 
         if (!options.forceMoveForward)

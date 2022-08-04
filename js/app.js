@@ -337,7 +337,7 @@ $(document).ready(function(){
             $(".cartIconCounter").css("color","black");
             $(".cartBtn").removeClass("cartBtnDisabled");
             $(".cartBtn").text(`Next`)
-            $(".cartBtn").attr("href", "#next");
+            $(".cartBtn").attr("href", "#checkout");
         }
     }
 
@@ -744,7 +744,6 @@ $(document).ready(function(){
             }
         }
     
-        console.log(meals)
     
         $(".mealItems").empty()
         for (const key in meals) {
@@ -776,4 +775,22 @@ $(document).ready(function(){
         myMeal()
     })
 
+
+    // ---------------- 
+    $(".ctaBtn").click(function(){
+        $(".actions a")[1].click()
+    })
+    $(".dateBtn").click(function(){
+        $(".actions a")[1].click()
+    })
+    $(".menuGridHeaderBtn").click(function(){
+        $(".actions a")[0].click()
+    })
+    $(".cartBtn").click(function(){
+        if($(".cartBtn").attr("href")=="#checkout"){
+            $(".actions a")[1].click()
+        }else{
+            alert("Please Add items to cart")
+        }
+    })
 });

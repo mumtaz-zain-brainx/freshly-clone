@@ -232,7 +232,7 @@
 .wizard > .actions
 {
     position: absolute;
-    display: block;
+    display: none;
     text-align: right;
     width: 100%;
 }

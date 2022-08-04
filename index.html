@@ -22,14 +22,7 @@
     <title>Freshly</title>
 </head>
 <body>
-    <div id="example-basic">
-        <div class="clearfix actions">
-            <ul role="menu" aria-label="Pagination">
-                <li aria-hidden="false" aria-disabled="false">
-                    <a href="#next" role="menuitem">Get Started</a>
-                </li>
-            </ul>
-        </div>
+    <div id="example-basic" class="breadcrumb">
         <h3>Plans <span class="ms-3 text-dark">></span></h3>
         <!-- Plans Section  -->
         <section id="plans">
@@ -74,12 +67,8 @@
                     <!-- CTA Button  -->
                     <div class="text-center d-flex flex-column d-md-block">
                         <div class="ctaTitle">Shipping and tax added at checkout</div>
-                        <div class="primary-button full-in-mobile clearfix actions">
-                            <ul role="menu" aria-label="Pagination">
-                                <li aria-hidden="false" aria-disabled="false">
-                                    <a href="#next" id="flexible-plan-cta" role="menuitem" rel="keep-params-flex" class="ctaBtn">Get Started</a>
-                                </li>
-                            </ul>
+                        <div class="primary-button full-in-mobile">
+                            <a href="#next" id="flexible-plan-cta" role="menuitem" rel="keep-params-flex" class="ctaBtn myNxtBtn">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -320,6 +309,7 @@
             </div>
         </section>
 
+        <!-- <h3>Day</h3> -->
         <h3>Day <span class="ms-3 text-dark">></span></h3>
         <!-- Date Section -->
         <section id="date" class="dateMain">
@@ -349,13 +339,9 @@
                                 </div>
     
                                 <!-- Date Button Section -->
-                                <div class="mx-2 d-flex flex-column align-items-center clearfix actions">
+                                <div class="mx-2 d-flex flex-column align-items-center">
                                     <!-- Date Button -->
-                                    <ul role="menu" aria-label="Pagination" class="w-100">
-                                        <li aria-hidden="false" aria-disabled="false">
-                                            <a href="#next" data-test="submit-date" class="mb-2 primary-button w-100 fw-semibold dateBtn">Next</a>
-                                        </li>
-                                    </ul>
+                                    <a href="#next" data-test="submit-date" class="mb-2 primary-button w-100 fw-semibold dateBtn">Next</a>
                                     <!-- First Delivery Date -->
                                     <p class="small text-center mt-4 fw-semibold" >
                                         <span>First Delivery Date: </span>
@@ -462,6 +448,7 @@
             </div>
         </section>
         
+        <!-- <h3>Meals</h3> -->
         <h3>Meals <span class="ms-3  text-dark">></span></h3>
         <!-- Menu Section -->
         <section id="menu" class="menuMain">
@@ -472,15 +459,11 @@
                     <header class=" d-flex align-items-center px-2 px-md-3 w-100  menuGridHeader">
                         <div class="p-0 mx-auto w-100 flex-nowrap row gap-0">
                             <!-- Header Button  -->
-                            <div class=" d-flex col align-items-center menuGridHeaderBtnContainer actions clearfix">
-                                <ul role="menu" aria-label="Pagination" class="w-100">
-                                    <li aria-hidden="false" aria-disabled="false">
-                                        <a href="#previous" role="menuitem" class=" d-md-none menuGridHeaderBtn" data-turbolinks="false" aria-label="Back">
-                                            <svg viewBox="0 0 8 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="16"><path d="M.25 8l5-5 1.5 1.5L3 8l3.75 3.5-1.5 1.5z"></path></svg>
-                                        </a>
-                                        <a href="#previous" role="menuitem" class=" d-none d-md-block menuGridHeaderBtn" title="Back" aria-label="Back" data-test="back" data-turbolinks="false"><svg viewBox="0 0 8 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="10"><path d="M.25 8l5-5 1.5 1.5L3 8l3.75 3.5-1.5 1.5z"></path></svg><span class="ms-1">Back</span></a>
-                                    </li>
-                                </ul>
+                            <div class=" d-flex col align-items-center menuGridHeaderBtnContainer">
+                                <a href="#previous" role="menuitem" class=" d-md-none menuGridHeaderBtn" data-turbolinks="false" aria-label="Back">
+                                    <svg viewBox="0 0 8 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="16"><path d="M.25 8l5-5 1.5 1.5L3 8l3.75 3.5-1.5 1.5z"></path></svg>
+                                </a>
+                                <a href="#previous" role="menuitem" class=" d-none d-md-block menuGridHeaderBtn" title="Back" aria-label="Back" data-test="back" data-turbolinks="false"><svg viewBox="0 0 8 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="10"><path d="M.25 8l5-5 1.5 1.5L3 8l3.75 3.5-1.5 1.5z"></path></svg><span class="ms-1">Back</span></a>
                             </div>
                             <!-- Header Date  -->
                             <div class="d-flex justify-content-center align-items-center flex-grow-1 col-auto col-md-auto">
@@ -677,6 +660,7 @@
                                                         <div>Get started by adding at least 4 meals</div>
                                                         <button class="mobileCartBtn mt-4">Get Started</button>
                                                     </div>
+                                                    <!-- <div>Get started by adding at least 4 meals</div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -688,7 +672,7 @@
                             
                             <!-- Cart footer Section -->
                             <footer role="button" class=" d-block cartBtnContainer pb-5" tabindex="0" data-test-type="cart-footer">
-                                <div class="d-flex flex-column actions clearfix">
+                                <div class="d-flex flex-column">
                                     <!-- Cart footer Header  -->
                                     <div class="FlexibleCartFooter-module__summaryContainer___16u4r cartBtnHeader">
                                         <div class="btnSubtotalContainer">
@@ -713,11 +697,7 @@
                                     </div>
 
                                     <!-- Cart Button  -->
-                                    <ul role="menu" aria-label="Pagination" class="w-100">
-                                        <li aria-hidden="false" aria-disabled="false">
-                                            <a href="#!" class="cartBtn cartBtnDisabled" role="menuitem" tabindex="0" data-test="submit-cart" data-test-type="cart__confirm-button" data-test-disabled="true">Add 4 To Continue</a>
-                                        </li>
-                                    </ul>
+                                    <a href="#!" class="cartBtn cartBtnDisabled" role="button" tabindex="0" data-test="submit-cart" data-test-type="cart__confirm-button" data-test-disabled="true">Add 4 To Continue</a>
                                     <div class="discountMsg">
                                         <p></p>
                                     </div>
