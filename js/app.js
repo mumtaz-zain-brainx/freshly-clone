@@ -337,7 +337,7 @@ $(document).ready(function(){
             $(".cartIconCounter").css("color","black");
             $(".cartBtn").removeClass("cartBtnDisabled");
             $(".cartBtn").text(`Next`)
-            $(".cartBtn").attr("href", "#checkout");
+            $(".cartBtn").attr("href", "#next");
         }
     }
 
@@ -613,6 +613,14 @@ $(document).ready(function(){
         }
     })
 
+    $(".formSubmitBtn").click(function(e){
+        e.preventDefault()
+        if(_firstName != "" && _lastName != "" && _fullName != "" && _addressLine1 != "" && _city != "" && _phone != "" && _email != ""){
+            alert("Finished!!")
+        }else{
+            alert("Please enter all the fields correctly")
+        }
+    })
 
 
 

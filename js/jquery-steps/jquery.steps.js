@@ -782,7 +782,7 @@ function paginationClickHandler(event)
     event.preventDefault();
 
     var anchor = $(this),
-        wizard = anchor.parent().parent().parent().parent(),
+        wizard = anchor.parent().parent().parent().parent().parent(),
         options = getOptions(wizard),
         state = getState(wizard),
         href = anchor.attr("href");
