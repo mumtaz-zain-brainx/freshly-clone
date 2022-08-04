@@ -614,7 +614,18 @@ $(document).ready(function(){
     $(".formSubmitBtn").click(function(e){
         e.preventDefault()
         if(_firstName != "" && _lastName != "" && _fullName != "" && _addressLine1 != "" && _city != "" && _phone != "" && _email != ""){
-            alert("Finished!!")
+            let res = `
+            First Name: ${_firstName}
+            Last Name: ${_lastName}
+            Full Name (Delivery): ${_fullName}
+            Address: ${_addressLine1} ${_addressLine2}, ${_city}
+            Phone No: ${_phone}
+            Email: ${_email}
+            Delivery Date: ${selectedDate}
+            Number of Meals: ${cartItems.length}
+            Total Bill (Tax & Shipping Included): $${(parseFloat(cartSubTotalDiscounted)+9.99).toFixed(2)}
+            `
+            alert(res)            
         }else{
             alert("Please enter all the fields correctly")
         }
